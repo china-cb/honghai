@@ -14,6 +14,9 @@
         <link rel="stylesheet" type="text/css" href="__CSS__/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="__CSS__/glide.css">
         <link rel="stylesheet" type="text/css" href="__CSS__/style.css">
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__static/css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__static/css/style.css"/>
+
         <script src="__JS__/jquery.min.js" type="text/javascript">
         </script>
         <script src="__JS__/jquery.glide.js" type="text/javascript">
@@ -167,7 +170,7 @@
                 <div class="productBox">
                     <div class="list">
                         <?php
- $_result=M("Product")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1531755913 AND status=1  AND catid in(7,14,53,63,15,64,16,68,69,70,71,72,73) AND posid like '%-1-%'")->order("id desc")->limit("6")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><div class="col-xs-6 col-sm-6 col-md-4 col-mm-6">
+ $_result=M("Product")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1531844787 AND status=1  AND catid in(7,14,53,63,15,64,16,68,69,70,71,72,73) AND posid like '%-1-%'")->order("id desc")->limit("6")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><div class="col-xs-6 col-sm-6 col-md-4 col-mm-6">
                                 <div class="productImg">
                                     <a href="<?php echo ($r["url"]); ?>" title="<?php echo ($r["title"]); ?>">
                                         <img src="<?php echo ($r["thumb"]); ?>" alt="<?php echo ($r["title"]); ?>">
@@ -250,7 +253,7 @@
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="newsBox">
                     <?php
- $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1531755913 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("1")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><div class="titleBar">
+ $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1531844787 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("1")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><div class="titleBar">
                             <h5>
                                 热点新闻
                             </h5>
@@ -280,7 +283,7 @@
                     </div>
                     <ul class="newsList">
                         <?php
- $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1531755913 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("4")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><li class="col-xs-12 col-sm-12 col-md-6">
+ $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1531844787 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("4")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><li class="col-xs-12 col-sm-12 col-md-6">
                                 <a href="<?php echo ($r["url"]); ?>" title="<?php echo ($r["title"]); ?>">
                                     <?php echo ($r["title"]); ?>
                                 </a>

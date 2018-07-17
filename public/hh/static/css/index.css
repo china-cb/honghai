@@ -1,0 +1,226 @@
+﻿/*main*/
+
+/*幻灯片*/
+
+.wrapper{ width:100%; height:450px; margin-bottom:5px; padding-top:1px; position:relative; z-index:200;text-align:center }
+
+/* focus */
+
+#focus{width:1600px; height:450px; overflow:hidden; position:absolute; margin-left:-800px; left:50%;}
+
+#focus ul{height:450px; position:absolute;}
+
+#focus ul li{float:left; width:1600px; height:450px; overflow:hidden; position:relative;}
+
+#focus ul li div{position:absolute;overflow:hidden;}
+
+.ind_Newscroll .btn{ position:absolute; top:8px; left:50%; margin-left:390px; }
+
+.ind_Newscroll .btn span{display:inline-block;_display:inline;_zoom:1; width:11px; height:11px; _font-size:0; margin-left:2px; cursor:pointer; background:url(../images/bnner_ac.png) no-repeat;}
+
+.ind_Newscroll .btn span.on{ background:url(../images/bnner_ho.png) no-repeat;}
+
+
+
+/*新闻滚动*/
+
+.ind_Newbd{ height:25px; background:url(../images/ind_newbd.jpg) no-repeat center;}
+
+.ind_Newscroll{ position:relative; height:25px; line-height:25px;}
+
+.ind_Newscroll strong{font-family:"微软雅黑"; font-size:12px; color:#FFF; position:absolute; top:0px; left:50%; margin-left:-500px; display:block;}
+
+.main{ margin-top:16px; padding-bottom:10px;}
+
+.ind_product{ width:1000px; margin-bottom:22px;  padding:13px 0 13px 20px;}
+
+.ind_comTop{ height:30px; line-height:30px; margin-bottom:13px; background-color:#FFF;}
+
+.ind_case .ind_comTop{ width:1000px;}
+.ind_link .ind_comTop{ width:1000px;}
+.ind_about .ind_comTop{ width:304px;}
+.ind_news .ind_comTop{ width:650px;}
+.ind_comTop h2{ float:left; margin-left:13px; color:#323232; font-size:14px;}
+
+.ind_comTop h2 span{ font-family:Arial; color:#969696; font-size:12px; margin-left:8px;}
+
+.ind_comTop h6{ float:left; margin-left:13px; color:#323232; font-size:12px;}
+
+.ind_comTop h6 span{ font-family:Arial; color:#969696; font-size:12px; margin-left:8px;}
+
+.ind_comTop a{ float:right; font-size:15px; margin-right:16px; color:#0e58a8;}
+
+.ind_comTop span a{ float:right; font-size:12px; margin-right:16px; color:#0e58a8;font-family:Arial;}
+
+.ind_comTop i{ float:right; font-style:normal; color:#969696;}
+
+.ind_proList li{ float:left; position:relative; margin-right:5px; margin-bottom:10px;display:inline; width:240px; height:181px;}
+
+.ind_proList li a img{ width:220px; height:142px; background-color:#f9f9f9;  padding:2px; border:1px solid #c9c9c9; display:block;}
+
+.in_proName{ height:30px; line-height:30px; text-align:center;}
+
+.in_proName a{ font-family:"微软雅黑"; color:#323232; font-size:13px;}
+
+.in_proName a:hover{color:#3333ff; font-weight:bold;}
+
+
+.ind_box { margin-bottom:20px;}
+
+.ind_box .ind_comTop{ border-bottom:1px solid #e3e3e3;}
+
+.ind_box .ind_comTop h2{ height:29px; border-bottom:2px solid #0e58a8; margin-left:0;}
+
+.ind_box .ind_comTop a{ margin-right:0;}
+
+.ind_link { margin-bottom:20px;}
+
+.ind_link .ind_comTop{ border-bottom:1px solid #e3e3e3;}
+
+.ind_link .ind_comTop h6{ height:29px; border-bottom:2px solid #0e58a8; margin-left:0;}
+
+.ind_link .ind_comTop a{ margin-right:0;}
+
+.ind_caseDown{ height:240px;}
+
+.ind_case_r{ width:314px; height:238px; overflow:hidden;}
+
+.ind_case_r li{ float:left; width:314px; height:33px; line-height:30px; overflow:hidden; border-bottom:1px dashed #c8c8c8;}
+
+.ind_case_r span{ float:right; font-family:Arial; color:#969696; font-size:10px;}
+
+.ind_about,.ind_wx{width:304px;}
+
+.ind_abIntro{ line-height:24px; height:96px; overflow:hidden; margin:8px 0 0 0;}
+
+.ind_abIntro a{ color:#0e58a8;}
+
+
+
+/*首页案列图片淡入淡出*/
+
+/*yx_rotaion*/
+
+.ind_case_l{ width:400px; height:230px; padding:1px; border:1px solid #dcdcdc;margin-top:1px;}
+.ind_case_f{  float:right;width:570px; height:234px;margin-top:1px;}
+
+.yx-rotaion-btn,.yx-rotaion-title,.yx-rotation-focus,.yx-rotation-t,.yx-rotaion-btn{position:absolute}
+
+.yx-rotation-title{ position:absolute; width:348px; height:27px; line-height:27px; overflow:hidden; background:url(../images/ind_casetback.png) repeat; left:0; bottom:1px; _bottom:-1px;z-index:1}
+
+.yx-rotation-t{ color:#FFF; z-index:2; bottom:0; left:14px; width:300px; height:28px; overflow:hidden; line-height:28px;}
+
+.yx-rotation-focus span,.yx-rotaion-btn span{ display:block;}
+
+.yx-rotation-focus{height:40px;line-height:40px;right:20px;bottom:0;z-index:2; display:none;}
+
+.yx-rotation-focus span{width:12px;height:12px;line-height:12px;float:left;margin-left:5px;position:relative;top:14px;cursor:pointer;background-position:-24px -126px;text-indent:-9999px}
+
+.yx-rotaion-btn{ position:absolute; z-index:200; width:56px; height:28px; bottom:0; right:0;}
+
+.yx-rotaion-btn span{ width:28px; height:28px; cursor:pointer; position:relative; display:block;}
+
+.yx-rotaion-btn .left_btn{ position:absolute; background:url(../images/ind_caselac.jpg) no-repeat; right:28px; }
+
+.yx-rotaion-btn .right_btn{ position:absolute; background:url(../images/ind_caserac.jpg) no-repeat; right:0;}
+
+.yx-rotaion-btn .left_btn:hover{ background:url(../images/ind_caselho.jpg) no-repeat;}
+
+.yx-rotaion-btn .right_btn:hover{ background:url(../images/ind_caserho.jpg) no-repeat;}
+
+.rotaion_list{width:0;height:0;overflow:hidden;}
+
+
+.ind_news_l{ width:300px;}
+
+.ind_Newname{ height:32px; line-height:32px; border-bottom:1px solid #c8c8c8;}
+
+.ind_Newname span{ float:right; font-family:Arial; color:#969696; font-size:10px;}
+
+.ind_Newname a{ font-weight:bold; width:226px; height:32px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;  display:block;}
+
+.ind_Newintro{ line-height:24px; height:48px; overflow:hidden; margin-top:10px;}
+
+.ind_wxbox{ padding-left:14px; height:114px; margin-bottom:13px;}
+
+.ind_wxbox li{ float:left; padding-right:12px; margin-right:10px; border-right:1px dotted #c8c8c8; width:80px; height:114px; overflow:hidden;}
+
+.ind_comname{ height:25px; line-height:25px; margin-top:5px; background:url(../images/ind_probd.png) repeat; text-align:center; display:block;}
+
+.ind_comname:hover{ background:url(../images/ind_wxnback.jpg) repeat-x; color:#FFF;}
+
+.ind_comname:hover a{ color:#FFF;}
+
+.ind_chbox li{ width:304px; height:34px; line-height:32px; margin-bottom:7px; background:url(../images/ind_chback.jpg) repeat-x;  }
+ 
+.ind_chbox li a{ font-family:"微软雅黑"; color:#323232; font-size:14px; font-weight:bold; width:222px; height:32px; padding-left:80px; border:1px solid #c8c8c8; display:block;}
+
+.ind_chbox li a span{ font-family:Arial; color:#969696; font-size:12px; font-weight:normal; margin-left:6px;} 
+
+.ind_chbox li a:hover{ background:url(../images/ind_chho.jpg) repeat-x; color:#FFF; border:1px solid #0e58a8; }
+
+.ind_chbox li a:hover span{ color:#FFF;}
+
+.productsMenu, #news .newslist .newsMenu ul, .productsBoxMenu ul ,.caseMenu ul{
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.productsMenu ul li, .newsMenu ul li, .productsBoxMenu ul li ,.caseMenu ul li{
+    float: left;
+    color: #5C5C5C;
+    padding: 8px 8px;
+    background: #EEE;
+    margin: 5px 10px 5px 0;
+    display: inline;
+    font-size: 1.1em;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.productsMenu ul li.on, .newsMenu ul li.on, .productsBoxMenu ul li.on ,.caseMenu ul li.on{
+    background: #0e58a8;
+    color: #fff;
+	font-weight:bold;
+}
+
+.newsBox, .itemList, .caseBox, .itemList{
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.newsBox ul li, .caseBox ul li{
+    font-size: 0.75em;
+    overflow: hidden;
+}
+ .newsBox ul li span, .caseBox ul li span {
+    float: right;
+	font: 100%/1.75em tahoma,Arial,'Microsoft Yahei','SimSun';
+    font-size: 12px;
+    color: #888;
+}
+.newsBox ul li i ,.caseBox ul li i{
+    color: #0e58a8;
+    font-style: normal;
+	padding-right: 5px;
+	font-size: 1em;
+}
+.newsBox ul li ,.caseBox ul li{
+    font-size: 0.8em;
+    color: #555;
+    border-bottom: 1px solid #efefef;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+	text-align:left;
+}
+.newsBox ul li a,.caseBox ul li a {
+    color: #555;
+    padding-right: 20px;
+	font: 100%/1.75em "微软雅黑";
+	font-size: 13px;
+}
+.newsBox a:hover,.caseBox a:hover {
+    color: #0e58a8;
+    padding-right: 20px;
+	font: 100%/1.75em "微软雅黑";
+	font-size: 15px;
+	font-weight:bold;
+}
