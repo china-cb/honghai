@@ -1,0 +1,39 @@
+<include file="Public:head" />
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+                <include file="Public:title" />
+                <div class="nameList">
+                    <ul>
+                        <notempty name="list">
+                            <volist name="list" id="r">
+                                <li>
+                                    <span>
+                                        {$r.id}
+                                    </span>
+                                    <a href="{$r.url}">
+                                        {$r.title}
+                                    </a>
+                                    <span class="time">
+                                        <a target="_blank" href="{$r.filepath}">
+                                            下载文件
+                                        </a>
+                                    </span>
+                                </li>
+                            </volist>
+                        </notempty>
+                    </ul>
+                </div>
+                <div class="pageBar">
+                    <div class="pageList">
+                        {$pages}
+                    </div>
+                </div>
+            </div>
+            <!-- left -->
+            <include file="Public:left" />
+        </div>
+    </div>
+    <include file="Public:foot" />
+</body>

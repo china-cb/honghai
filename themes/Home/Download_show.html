@@ -1,0 +1,45 @@
+<include file="Public:head" />
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+                <include file="Public:title" />
+                <div class="col-sm-12 col-md-12 keyweb">
+                    <div class="detailTitle" style="margin-left: 0; border: 0; background: none">
+                        {$download.title}
+                    </div>
+                    <div class="detailUrl">
+                        <a target=_blank href="{$download.filepath}">
+                            下载文件
+                        </a>
+                    </div>
+                    <div class="detailContent">
+                    </div>
+                </div>
+                <include file="Public:pagebox" />
+                <div class="aboutProduct">
+                    <div class="titleBar">
+                        <h5>
+                            相关下载
+                        </h5>
+                        <span>
+                            &nbsp
+                        </span>
+                    </div>
+                    <div class="indexNews">
+                        <Gr:list catid="catid" field="id,title,createtime,url" limit="12">
+                            <li>
+                                <a href="{$r.url}" title="{$r.title}">
+                                    {$r.title}
+                                </a>
+                            </li>
+                        </Gr:list>
+                    </div>
+                </div>
+            </div>
+            <!-- left -->
+            <include file="Public:left" />
+        </div>
+    </div>
+    <include file="Public:foot" />
+</body>

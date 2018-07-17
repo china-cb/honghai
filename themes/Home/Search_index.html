@@ -1,0 +1,48 @@
+<include file="Public:head" />
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- right -->
+            <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                <div class="list_box">
+                    <div class="titleBar">
+                        <h5>
+                            搜索结果
+                        </h5>
+                        <span>
+                        </span>
+                    </div>
+                    <div class="nameList">
+                        <ul>
+                            <notempty name="list">
+                                <volist name="list" id="r">
+                                    <li>
+                                        <span>
+                                            {$r.id}
+                                        </span>
+                                        <a href="{$r.url}">
+                                            {$r.title}
+                                        </a>
+                                        <span class="time">
+                                            {$r.createtime|toDate=###,'Y-m-d'}
+                                        </span>
+                                    </li>
+                                </volist>
+                            </notempty>
+                        </ul>
+                    </div>
+                    <div class="pageBar">
+                        <div class="pageList">
+                            {$pages}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- left -->
+            <include file="Public:left" />
+        </div>
+    </div>
+    <include file="Public:foot" />
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<div class="otherPageBox">
+    <div class="col-xs-9 col-sm-9 col-md-9 keyweb">
+        <div class='otherPage'>
+            <div class='prevBox'>
+                <if condition="$prea">
+                    上一篇：
+                    <a href="{$prea.url}" title="{$prea.title}">
+                        {$prea.title}
+                    </a>
+                    <else/>
+                    <span>
+                        上一篇：
+                        <a>
+                            无
+                        </a>
+                    </span>
+                </if>
+            </div>
+            <div class='nextBox'>
+                <if condition="$next">
+                    下一篇：
+                    <a href="{$next.url}">
+                        {$next.title}
+                    </a>
+                    <else/>
+                    <span>
+                        下一篇：无
+                    </span>
+                </if>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 keyweb">
+        <a class="back" href="javascript:history.go(-1)">
+            返回
+        </a>
+    </div>
+</div>

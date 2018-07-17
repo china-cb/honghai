@@ -1,0 +1,91 @@
+<div class="col-xs-12 col-sm-4 col-md-3">
+    <div class="navigationBox" id="classification">
+        <div class="classTitleBar">
+            {$max_parent_catname}
+        </div>
+        <div class="list">
+            <ul id="firstpane">
+                <Gr:cat catid="max_parent_catid" id="r">
+                    <li>
+                        {if $catid==$r['id']}
+                        <a class="firstSelected selected" target="_self" href="{$r.url}">
+                            {$r.catname}
+                        </a>
+                        {else}
+                        <a class="" target="_self" href="{$r.url}">
+                            {$r.catname}
+                        </a>
+                        {/if}
+                    </li>
+                </Gr:cat>
+            </ul>
+        </div>
+    </div>
+    <div class="newsBox">
+        <div class="titleBar">
+            <h5>
+                热点新闻
+            </h5>
+            <span>
+                NEWS CENTER
+            </span>
+        </div>
+        <ul class="newsList">
+            <Gr:list catid="5" filed="url,title" limit="4" posid="1">
+                <li>
+                    <a href="{$r.url}" title="{$r.title}">
+                        {$r.title}
+                    </a>
+                </li>
+            </Gr:list>
+        </ul>
+    </div>
+    <div class="contactBox">
+        <div class="titleBar">
+            <h5>
+                联系方式
+            </h5>
+            <span>
+                CONTACT US
+            </span>
+        </div>
+        <p style="white-space:normal;">
+            <span style="line-height:1.5;">
+                手机：{$site_phone}
+            </span>
+        </p>
+        <p style="white-space:normal;">
+            联系人：{$site_lxr}
+        </p>
+        <p style="white-space:normal;">
+            邮箱：{$site_email}
+        </p>
+        <p style="white-space:normal;">
+            地址：{$site_address}
+        </p>
+    </div>
+    <div class="btn-group dropup" style="margin-bottom: 15px;">
+        <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown"
+        aria-expanded="false" style="line-height: 13px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;友情链接&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+        <button type="button" class="btn btn-default dropdown-toggle btn-sm" style="line-height: 13px;">
+            <span class="caret">
+            </span>
+            <span class="sr-only">
+                友情链接
+            </span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <Gr:link typeid="0" linktype="1" key="i" limit="20">
+                <li>
+                    <a href="{$r.siteurl}" target="_blank">
+                        {$r.name}
+                    </a>
+                </li>
+            </Gr:link>
+        </ul>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,185 @@
+<include file="Public:head" />
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+                <div class="productBox">
+                    <div class="list">
+                        <Gr:list catid="7" filed="url,title,thumb" limit="6" posid="1">
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-mm-6">
+                                <div class="productImg">
+                                    <a href="{$r.url}" title="{$r.title}">
+                                        <img src="{$r.thumb}" alt="{$r.title}">
+                                    </a>
+                                    <span>
+                                        {$r.title|str_cut=###,15}
+                                    </span>
+                                    <a class="productTitle" href="{$r.url}" title="{$r.title}">
+                                        查看详情
+                                    </a>
+                                </div>
+                            </div>
+                        </Gr:list>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div id="classification">
+                    <div class="navigationBox homeNavigation">
+                        <div class="classTitleBar">
+                            产品分类
+                        </div>
+                        <div class="list">
+                            <ul id="firstpane" class="indexFirstpane">
+                                <Gr:cat catid="7" id="r">
+                                    <li>
+                                        <a class="" target="_self" href="{$r.url}">
+                                            {$r.catname}
+                                        </a>
+                                        <span>
+                                            +
+                                        </span>
+                                        <ul>
+                                            <Gr:cat catid="$r['id']" id="rr">
+                                                <li>
+                                                    <a class="" target="_self" href="{$rr.url}">
+                                                        {$rr.catname}
+                                                    </a>
+                                                </li>
+                                            </Gr:cat>
+                                        </ul>
+                                    </li>
+                                </Gr:cat>
+                            </ul>
+                        </div>
+                        <div class="telBox">
+                            <img src="{$site_tel}" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aboutBg" style="background-image:url({$site_aboutpic})">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="aboutBox">
+                        <section>
+                            <img src="{$site_about}" alt="" />
+                            <p class="aboutContent">
+                                <span>
+                                    <span style="white-space:normal;">
+                                        {$block[20]}
+                                    </span>
+                                    <br />
+                                </span>
+                            </p>
+                            <a href="{$Cats[17][url]}" class="aboutMore">
+                                了解我们更多&gt;&gt;
+                            </a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 20px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                <div class="newsBox">
+                    <Gr:list catid="5" filed="url,title,thumb,description" limit="1" posid="1">
+                        <div class="titleBar">
+                            <h5>
+                                热点新闻
+                            </h5>
+                            <span>
+                                NEWS CENTER
+                            </span>
+                            <a class="rightMore" href="{$Cats[5][url]}">
+                                +More
+                            </a>
+                        </div>
+                    </Gr:list>
+                    <div class="firstNewsBox">
+                        <img src="{$r.thumb}" />
+                        <span>
+                            <a href="{$r.url}">
+                                {$r.title}
+                            </a>
+                        </span>
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$r.description}
+                        </p>
+                        <span>
+                            <a href="{$r.url}" class="more">
+                                查看详情 >>
+                            </a>
+                        </span>
+                    </div>
+                    <ul class="newsList">
+                        <Gr:list catid="5" filed="url,title" limit="4" posid="1">
+                            <li class="col-xs-12 col-sm-12 col-md-6">
+                                <a href="{$r.url}" title="{$r.title}">
+                                    {$r.title}
+                                </a>
+                            </li>
+                        </Gr:list>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="contactBox">
+                    <div class="titleBar">
+                        <h5>
+                            联系方式
+                        </h5>
+                        <span>
+                            CONTACT US
+                        </span>
+                        <a class="rightMore" href="{$Cats[24][url]}">
+                            +More
+                        </a>
+                    </div>
+                    <p style="white-space:normal;">
+                        <span style="line-height:1.5;">
+                            手机：{$site_phone}
+                        </span>
+                    </p>
+                    <p style="white-space:normal;">
+                        联系人：{$site_lxr}
+                    </p>
+                    <p style="white-space:normal;">
+                        邮箱：{$site_email}
+                    </p>
+                    <p style="white-space:normal;">
+                        地址：{$site_address}
+                    </p>
+                </div>
+                <div class="btn-group dropup" style="margin-bottom: 15px;">
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown"
+                    aria-expanded="false" style="line-height: 13px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;友情链接&nbsp;&nbsp;&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-default dropdown-toggle btn-sm" style="line-height: 13px;">
+                        <span class="caret">
+                        </span>
+                        <span class="sr-only">
+                            友情链接
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <Gr:link typeid="0" linktype="1" key="i" limit="20">
+                            <li>
+                                <a href="{$r.siteurl}" target="_blank">
+                                    {$r.name}
+                                </a>
+                            </li>
+                        </Gr:link>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public:foot" />
+</body>

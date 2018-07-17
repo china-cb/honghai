@@ -1,0 +1,36 @@
+<include file="Public:head" />
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+                <include file="Public:title" />
+                <div class="productList">
+                    <notempty name="list">
+                        <volist name="list" id="r">
+                            <div class="col-xs-6 col-sm-3 col-md-3 col-mm-3">
+                                <div class="productImg">
+                                    <a href="{$r.url}" title="{$r.title}">
+                                        <img src="{$r.thumb}" alt="{$r.title}">
+                                    </a>
+                                    <a class="productTitle" href="{$r.url}" title="{$r.title}">
+                                        {$r.title}
+                                    </a>
+                                </div>
+                            </div>
+                        </volist>
+                    </notempty>
+                </div>
+                <div class="pageBar">
+                    <div class="pageList">
+                        {$pages}
+                    </div>
+                </div>
+            </div>
+            <!-- left -->
+            <include file="Public:left" />
+        </div>
+    </div>
+    <include file="Public:foot" />
+</body>
+
+</html>

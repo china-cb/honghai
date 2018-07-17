@@ -1,0 +1,137 @@
+<include file="Public:head" />
+<link rel="stylesheet" type="text/css" href="__CSS__/lightgallery.css">
+<link rel="stylesheet" type="text/css" href="__CSS__/detailGlide.css">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
+            <include file="Public:title" />
+            <div class="col-sm-12 col-md-5 keyweb">
+                <div class="detailGlide" style="max-width: 600px; margin: 0 auto">
+                    <div class="slider">
+                        <ul class="slider__wrapper">
+                            <volist name="product.pics" id="r">
+                                <if condition="!empty($r[filepath])">
+                                    <li data-responsive='' data-src='{$r[filepath]}' data-sub-html='' class='slider__item real'>
+                                        <a>
+                                            <img src='{$r[filepath]}'>
+                                        </a>
+                                    </li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div id="detailNav">
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    var glide = $('.slider').glide({
+                        autoplay: false,
+                        navigationImg: true,
+                        navigation: "#detailNav"
+                    });
+                </script>
+            </div>
+            <div class="col-sm-12 col-md-7 keyweb">
+                <div class="detailTitle">
+                    {$product.title}
+                </div>
+                <div class="detailParameter">
+                    <li>
+                        产品编号：{$product.bianhao}
+                    </li>
+                    <li>
+                        产品特性：{$product.texing}
+                    </li>
+                    <li>
+                        产品功能：{$product.gongneng}
+                    </li>
+                    <li>
+                        产品规格：{$product.guige}
+                    </li>
+                    <li>
+                        产品描述：{$product.description}
+                    </li>
+                </div>
+                <div class="detailUrl">
+                    <form id="orderform" method="post" action="/order.html" ;>
+                        <input type="hidden" name="product" value="{$product.title}" method="post"
+                        />
+                        <a href="javascript:orderform.submit();">
+                            在线订购
+                        </a>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 keyweb">
+                <div class="detailTitleTxt">
+                    详情
+                </div>
+                <div class="detailContent">
+                    <div id="detailvalue0">
+                        {$product.content}
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <include file="Public:pagebox" />
+            <div class="aboutProduct">
+                <div class="titleBar">
+                    <h5>
+                        相关产品
+                    </h5>
+                    <span>
+                        &nbsp
+                    </span>
+                </div>
+                <div class="productList">
+                    <gr:list catid="catid" field="title,url,thumb" limit="4" id="r">
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-mm-6 productImg">
+                            <a title="{$r.title}" href='{$r.url}'>
+                                <span class="imgLink-hover">
+                                    <span class="hover-link">
+                                    </span>
+                                </span>
+                                <img src="{$r.thumb}" alt="{$r.title}">
+                            </a>
+                            <a class="productTitle" href="{$r.url}" title="{$r.title}">
+                                {$r.title}
+                            </a>
+                        </div>
+                    </gr:list>
+                </div>
+            </div>
+        </div>
+        <!-- left -->
+        <include file="Public:left" />
+    </div>
+</div>
+<include file="Public:foot" />
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.slider__wrapper').lightGallery({
+            selector: ".real"
+        });
+    });
+</script>
+<script src="__JS__/picturefill.min.js">
+</script>
+<script src="__JS__/lightgallery.js">
+</script>
+<script src="__JS__/lg-fullscreen.js">
+</script>
+<script src="__JS__/lg-thumbnail.js">
+</script>
+<script src="__JS__/lg-video.js">
+</script>
+<script src="__JS__/lg-autoplay.js">
+</script>
+<script src="__JS__/lg-zoom.js">
+</script>
+<script src="__JS__/lg-hash.js">
+</script>
+<script src="__JS__/lg-pager.js">
+</script>
+</body>
+
+</html>

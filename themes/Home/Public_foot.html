@@ -1,0 +1,138 @@
+<nav class="navbar navbar-default navbar-fixed-bottom footer_nav">
+    <div class="foot_nav btn-group dropup">
+        <a class="dropdown-toggle" href="/">
+            <span class="glyphicon glyphicon-share btn-lg" aria-hidden="true">
+            </span>
+            首页
+        </a>
+    </div>
+    <div class="foot_nav">
+        <a href="tel:{$site_phone}">
+            <span class="glyphicon glyphicon-phone btn-lg" aria-hidden="true">
+            </span>
+            手机
+        </a>
+    </div>
+    <div class="foot_nav">
+        <a id="gotocate" href="#">
+            <span class="glyphicon glyphicon-th-list btn-lg" aria-hidden="true">
+            </span>
+            分类
+        </a>
+    </div>
+    <div class="foot_nav">
+        <a id="gototop" href="#">
+            <span class="glyphicon glyphicon-circle-arrow-up btn-lg" aria-hidden="true">
+            </span>
+            顶部
+        </a>
+    </div>
+</nav>
+<footer>
+			<div class="foot wid1000">
+				<div class="f_top">
+					<Gr:cat catid="0" id="r" key="i">
+						{if $i==1}		
+					<div class="f_tbox fl">
+						<dl>			
+							<dt>
+                                <a href="{$r.url}" target="_self" class="dropdown-toggle select" data-toggle="dropdown">
+                                    <b>{$r.catname}</b>
+                                </a>
+								  <a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-menu-down btn-xs">
+                                        </span>
+                                  </a> 
+                                  {else}
+                                    <a href="{$r.url}" target="_self" class="dropdown-toggle" data-toggle="dropdown">
+                                      <b>{$r.catname}</b>
+                                    </a>
+                                    <a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-menu-down btn-xs">
+                                        </span>
+                                    </a>
+                                  {/if} {if $r['child']=="1"}
+							</dt>
+							<dd>
+								<Gr:cat catid="$r['id']" id="rr">
+                                    <li>
+                                        <a class='' target='_self' href="{$rr.url}">
+                                            {$rr.catname}
+                                        </a>
+                                    </li>
+                                </Gr:cat>
+							</dd>
+						</dl>						
+					</div>
+						{/if}
+                    </Gr:cat>
+					<div class="right">
+						<p><img src="static/picture/400tel_foot.gif" width="270" height="60" alt="洪海智造400电话：400-618-9567" /></p>
+						<p>上海led魔方柱、昆明旋转屏、北京十面翻广告牌</p>
+						<p>广州led天幕、深圳led幕墙、沈阳led圆柱显示屏</p>
+						<br>
+						<p>洪海集团www.zZ-hH.com洪海智造4006189567</p>
+						<p>山东三面翻、魔方柱、高炮、灯箱、幕墙、天幕工厂</p>
+						<p>地址：山东省枣庄市经济开发区谷山路8号</p>
+						<p>固话：0632-3880096 手机：186-6328-8881</p>
+					</div>
+				</div>
+				<div class="f_down">
+					<div class="copyright">版权所有 © 2002-2018 洪海光电集团有限公司 - <strong>大型<a href="http://www.zz-hh.com/">户外广告牌制作</a>厂家</strong> - 技术创新行业领先 鲁ICP备09094412号-1
+						<a href='http://www.wze8.com/' target='_blank'>网站建设优化</a>
+						<br><br>
+						<h4>洪海专业为您提供室内外LED天幕、公交候车亭滚动灯箱、LED三面翻广告牌、单立柱高炮广告牌、会跳舞旋转魔方屏、LED幕墙楼体亮化整体解决方案</h4></div>
+				</div>
+			</div>
+    {:W('Kefu')}
+</footer>
+<link rel="stylesheet" type="text/css" href="__CSS__/chat.css" />
+<script>
+    $('#kefu .kefuClose').click(function() {
+        $('#kefu .kefuLeft').animate({
+            width: '30px'
+        },
+        500);
+        $('#kefu .kefuRight').animate({
+            width: 0
+        },
+        100);
+    });
+    $('.kefuLeft').click(function() {
+        $(this).animate({
+            width: 0
+        },
+        100);
+        $('.kefuRight').animate({
+            width: '154px'
+        },
+        100);
+    });
+</script>
+<script src="__JS__/common.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    function mShare() {
+        $("#mShareBox").toggle();
+        $("#serviceBox").hide();
+    }
+    if ($(".banner .slider__wrapper li").length == 0) {
+        $(".banner").addClass("emptyBanner");
+    }
+    function showService() {
+        $("#mShareBox").hide();
+        $("#serviceBox").toggle();
+    }
+</script>
+<!--访问统计-->
+<script>
+    window.onload = function()
+    {
+        $.ajax({
+            url:"{:U('Api/Hitstall/index')}",
+        });
+    }
+</script>
+</html>
