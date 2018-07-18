@@ -15,9 +15,9 @@ class PublicAction extends Action {
 
     public function _initialize()
     {
-        $this->SysConfig = F('sys.config');
-        $this->Model     = F('Model');
-        $this->Mod       = F('Mod');
+        $this->SysConfig = F('sys.config');     //读取基础配置信息        /runtime/data/ 目录下
+        $this->Model     = F('Model');           //读取内容模型配置信息     /runtime/data/ 目录下
+        $this->Mod       = F('Mod');             //内容模型数字配置信息       /runtime/data/ 目录下
 
         //用户组
         $this->_groupid = !empty($_SESSION['member']['groupid'])?$_SESSION['member']['groupid']:0;

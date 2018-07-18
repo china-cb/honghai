@@ -125,7 +125,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">基本内容</div>
                 <div class="panel-body">
-            <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==1): ?><div class="form-group">
+            <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; echo ($r['type']); ?>
+                <?php if(!empty($r['status']) && $r['isbase']==1): ?><div class="form-group">
                         <label class="control-label">
                             <?php if($r['required']): ?><span class="text-daner">*</span><?php endif; echo ($r["name"]); ?>
                         </label>

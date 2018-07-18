@@ -174,7 +174,7 @@
 
                     <div class="product_dList">
                         <ul>
-                            <?php if(!empty($vo["sonlist"])): if(is_array($vo["sonlist"])): $i = 0; $__LIST__ = $vo["sonlist"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li><a href="" title="会跳舞的LED显示屏制作" target="_blank"><img width="224" height="164" src="<?php echo ($vv["thumb"]); ?>" alt="会跳舞的LED显示屏制作效果图片" /><span class="pro_dName"><?php echo ($vv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
+                            <?php if(!empty($vo["sonlist"])): if(is_array($vo["sonlist"])): $i = 0; $__LIST__ = $vo["sonlist"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li><a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($vv["id"]); ?>" title="会跳舞的LED显示屏制作" target="_blank"><img width="224" height="164" src="<?php echo ($vv["thumb"]); ?>" alt="会跳舞的LED显示屏制作效果图片" /><span class="pro_dName"><?php echo ($vv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
                         </ul>
                     </div>
 

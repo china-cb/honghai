@@ -121,7 +121,8 @@ class AttachmentAction extends  PublicAction {
         $upload = new UploadFile();
         //$upload->supportMulti = false;
         //设置上传文件大小
-        $upload->maxSize = $this->SysConfig['attach_maxsize'];
+       $upload->maxSize = $this->SysConfig['attach_maxsize'];
+
         $upload->autoSub = true;
 
         $upload->subType = 'date';
@@ -135,12 +136,13 @@ class AttachmentAction extends  PublicAction {
 
         //删除原图
         $upload->thumbRemoveOrigin = true;
-
+        //var_dump($_FILES);
         if (!$upload->upload()) {
             $this->ajaxReturn(0,$upload->getErrorMsg(),0);
         } else {
             //取得成功上传的文件信息
             $uploadList = $upload->getUploadFileInfo();
+            //dump($uploadList);
 
             if(I('addwater')){
                 //$this->Config['watermark_enable']  $_REQUEST['addwater']

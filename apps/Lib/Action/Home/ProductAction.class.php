@@ -26,4 +26,23 @@ class ProductAction extends PublicAction {
         $this->assign("catemenu",$cateinfo);
         $this->display();
     }
+
+    public function detail()
+    {
+        $id = I("id");
+        $cateinfo = M("category")
+            ->where(["parentid"=>7,"ismenu"=>1])
+            ->order("id asc")
+            ->select();
+
+        $info = M("product")->where(["id"=>$id])->find();
+        $picinfo = json_decode($info['pics'],true);
+        //dump($picinfo);
+
+        $this->assign("catemenu",$cateinfo);        //分类菜单
+        $this->assign("catid",$info['catid']);     //分类ID
+        $this->assign("info",$info);                //产品详情
+        $this->assign("picinfo",$picinfo);          //图片列表
+        $this->display();
+    }
 }

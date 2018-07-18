@@ -11,13 +11,15 @@ class ContentAction extends PublicAction {
 
     public function _initialize()
     {
-        parent::_initialize();
+        parent::_initialize();   //执行父类的初始化方法
         $this->catid = I('request.catid', 0, 'intval');
         $this->db = D(MODULE_NAME);
         if (!empty($this->Mod[MODULE_NAME])) {
 
-            $this->modelid = $this->Mod[MODULE_NAME];
-            $this->m = $this->Model[$this->modelid];
+            $this->modelid = $this->Mod[MODULE_NAME];   //获取当前内容模型的所属下表 mod.php信息
+            //dump($this->modelid);
+            $this->m = $this->Model[$this->modelid];     //获取当前内容模型的所属下表 model.php信息
+            //dump($this->Model[$this->modelid]);
             $this->assign('modelid',$this->modelid);
             $this->Type = F('Type');
             $this->assign('Type',$this->Type);
@@ -62,7 +64,7 @@ class ContentAction extends PublicAction {
                 $this->fields[$key] = $res;
             }
         }
-
+        //dump($fields);
         $this->assign('fields',$this->fields);
         $this->assign('model',$this->Model);
     }
@@ -274,12 +276,14 @@ class ContentAction extends PublicAction {
             }
         } else {
             $form = new Form();
+            //dump($form);
 
             $this->assign('form', $form );
 
             $template = file_exists(TMPL_PATH.GROUP_NAME.'/'.MODULE_NAME.'/edit.html') ? MODULE_NAME.':edit' : 'Content:add';
 
             $this->display($template);
+
         }
     }
 
