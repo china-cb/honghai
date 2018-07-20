@@ -60,6 +60,8 @@ class PageAction extends PublicAction {
         $this->display('Page:'.$template);
     }
 
+
+
     public function hits()
     {
         $module    = $module ? $module : MODULE_NAME;
@@ -76,4 +78,8 @@ class PageAction extends PublicAction {
         }
         exit;
     }
+
+
+
+
 }

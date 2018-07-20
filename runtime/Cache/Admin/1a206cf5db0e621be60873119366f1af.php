@@ -107,106 +107,77 @@
                 <?php if(is_array($parent_menu)): $i = 0; $__LIST__ = $parent_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu_li): $mod = ($i % 2 );++$i;?><li><?php echo ($menu_li["name"]); ?></li><?php endforeach; endif; else: echo "" ;endif; ?>
             </ol>
             
-<style>
-    .list-dot{ padding-bottom:10px}
-    .list-dot li,.list-dot-othors li{padding:5px 0; border-bottom:1px dotted #c6dde0; font-family:"宋体"; color:#bbb; position:relative;_height:22px}
-    .list-dot li span,.list-dot-othors li span{color:#004499}
-    .list-dot li a.close span,.list-dot-othors li a.close span{display:none}
-    .list-dot li a.close,.list-dot-othors li a.close{ background: url("/public/images/cross.png") no-repeat left 3px; display:block; width:16px; height:16px;position: absolute;outline:none;right:5px; bottom:5px}
-    .list-dot li a.close:hover,.list-dot-othors li a.close:hover{background-position: left -46px}
-    .list-dot-othors li{float:left;width:24%;overflow:hidden;}
-</style>
-<script type="text/javascript" src="__JS__/jquery.colorpicker.js"></script>
-<script src="__JS__/Sortable.min.js"></script>
-
-<form id="myform" action="<?php echo U($model_name.'/edit');?>" method="post">
+<?php if($_SESSION['admin']['id']== 1): ?><div class="table-toolbar">
     <div class="row">
         <div class="col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-heading">基本内容</div>
-                <div class="panel-body">
-            <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==1): ?><div class="form-group">
-                        <label class="control-label">
-                            <?php if($r['required']): ?><span class="text-daner">*</span><?php endif; echo ($r["name"]); ?>
-                        </label>
-                        <div id="box_<?php echo ($r['field']); ?>">
-                            <?php if($r['type'] == 'images') : ?>
-<?php
-$parseData = $form->images($r,''); $file_list = json_decode($vo[$r['field']], true); ?>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">最多同时可以上传<?php echo ($r['setup']['upload_maxnum']); ?>张
-                                    <div class="pull-right">
-                                        <a class="btn btn-xs btn-info" href="javascript:swfupload('<?php echo ($r['field']); ?>', '<?php echo ($parseData['yzh_auth']); ?>', up_images);">图片上传</a>
-                                    </div>
-                                </div>
-                                <div id="<?php echo ($r['field']); ?>_images" class="imagesList panel-body">
-                                    <input type="hidden" name="<?php echo ($r['field']); ?>[]" value=""/>
-                                    <input type="hidden" name="<?php echo ($r['field']); ?>_name[]" value="" />
-
-                            <?php if(!empty($file_list)): if(is_array($file_list)): $i = 0; $__LIST__ = $file_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div id="uplistd_<?php echo ($i); ?>">
-                                        <img src="<?php echo ($v['filepath']); ?>"/>
-                                        <input type="hidden" name="<?php echo ($r['field']); ?>[]" value="<?php echo ($v['filepath']); ?>" />
-                                        <div class="image_title">
-                                            <input type="text" class="form-control" placeholder="注释" name="<?php echo ($r['field']); ?>_name[]" value="<?php echo ($v['filename']); ?>" />
-                                        </div>
-                                        <button type="button" onclick="remove_this('uplistd_<?php echo ($i); ?>');" class="close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div><?php endforeach; endif; else: echo "" ;endif; ?>
-                                <?php else: endif; ?>
-
-                                </div>
-                            </div>
-
-                            <script>
-                                Sortable.create(pics_images, {
-                                    handle: "img",
-                                    animation: 150
-                                });
-                            </script>
-                            <?php else :?>
-                                <?php echo (getform($form,$r)); ?>
-                            <?php endif;?>
-                        </div>
-                    </div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">缩略图</div>
-                <div class="panel-body">
-                    <div class="thumb_box" id="thumb_box">
-                        <div id="thumb_aid_box"></div>
-                        <a class="thumbnail uploadimg" href="javascript:swfupload('thumb','<?php echo get_yzh_auth(1,'200kb',1);?>',yesdo);">
-                            <img src="<?php if(empty($vo["thumb"])): ?>__IMG__/upload_thumb.png<?php else: echo ($vo['thumb']); endif; ?>" id="thumb_pic" width="135" height="113">
-                        </a>
-                        <input type="button" value="取消缩略图" onclick="javascript:clean_thumb('thumb');" class="btn btn-xs btn-primary" />
-                        <input type="hidden" id="thumb" name="thumb" value="<?php echo ($vo['thumb']); ?>" />
-                    </div>
-                </div>
-            </div>
-
-
-            <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==0): ?><div class="panel panel-default">
-                        <div class="panel-heading">
-                            <?php if($r['required']): ?><font color="red">*</font><?php endif; echo ($r["name"]); ?>
-                        </div>
-                        <div class="panel-body">
-                            <?php echo (getform($form,$r)); ?>
-                        </div>
-                    </div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
-
+            <a class="btn btn-primary" href="<?php echo U('Category/add');?>">新增栏目</a>
+            
         </div>
     </div>
+</div><?php endif; ?>
 
-    <div class="form-actions">
-        <input type="hidden" name="id" value="<?php echo ($vo["id"]); ?>">
-        <input type="hidden" name="forward" value="<?php echo ($_SERVER['HTTP_REFERER']); ?>"/>
-        <input type="submit" value="提交" class="btn btn-primary" />
-        <input type="reset" value="重置" class="btn btn-primary"/>
+<div class="row">
+    <div class="col-md-12">
+        <form name="myform" id="myform" action="<?php echo U('category/listorder');?>" method="post">
+            <table class="table table-hover table-condensed table-bordered">
+                <thead>
+                <tr>
+                    <th class="w-50">排序</th>
+                    <th class="env-class w-50">ID</th>
+                    <th>栏目名称</th>
+                    <th>栏目类型</th>
+                    <!--<th>在新窗口打开</th>-->
+                    <th>是否显示</th>
+                    <th>访问</th>
+                    <th class="w-300">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr $class_id class='$class_css'>
+                        <td  class='table-cell-1'>
+                            <input onclick="sort(<?php echo ($vo["id"]); ?>,<?php echo ($vo["listorder"]); ?>);" value="<?php echo ($vo["listorder"]); ?>" class="form-control input-c">
+                        </td>
+                        <td class='env-class'><?php echo ($vo["id"]); ?></td>
+                        <td>
+                            <?php echo ($vo["title_prefix"]); echo ($vo["catname"]); ?>
+                        </td>
+                        <td>
+                            <?php if($vo['type'] == 2): ?>链接
+                                <?php else: ?>
+                                <?php echo ($models[$vo['modelid']]['name']); endif; ?>
+                        </td>
+                        <!--<td>-->
+                            <!--<?php if(($vo["ismenu"]) == "1"): ?>-->
+                                <!--<a href="javascript:updateStatus(0,<?php echo ($vo['id']); ?>);"><i class="fa fa-check text-success"></i></a>-->
+                                <!--<?php else: ?>-->
+                                <!--<a href="javascript:updateStatus(1,<?php echo ($vo['id']); ?>);"><i class="fa fa-ban text-danger"></i></a>-->
+                            <!--<?php endif; ?>-->
+                        <!--</td>-->
+                        <td>
+                            <?php if(($vo["ismenu"]) == "1"): ?><a href="javascript:updateStatus(0,<?php echo ($vo['id']); ?>);"><i class="fa fa-check text-success"></i></a>
+                                <?php else: ?>
+                                <a href="javascript:updateStatus(1,<?php echo ($vo['id']); ?>);"><i class="fa fa-ban text-danger"></i></a><?php endif; ?>
+                        </td>
+                        <td><a href="<?php echo ($vo["url"]); ?>" target="_blank">访问<?php echo ($vo["status"]); ?></a></td>
+                        <td class="w-300">
+                            <?php if(($vo["modelid"]) > "1"): ?><a class="btn btn-info btn-xs" href="<?php echo U($vo['model'].'/add',array('catid'=>$vo['id']));?>" >添加内容</a><?php endif; ?>
+                            <a class="btn btn-info btn-xs" href="<?php echo U('Category/add',array('parentid'=>$vo['id']));?>" >添加子栏目</a>
+                            <a class="btn btn-info btn-xs" href="<?php echo U('Category/edit',array('id'=>$vo['id']));?>" >编辑</a>
+                            <?php if($_SESSION['admin']['role'] > 1):?>
+                                <?php if($vo['parentid'] > 0):?>
+                                <a class="btn btn-danger btn-xs" href="javascript:confirm_delete('<?php echo U('category/delete','id='.$vo['id']);?>')">删除</a>
+                                <?php endif; ?>
+                            <?php else: ?>
+                            <a class="btn btn-danger btn-xs" href="javascript:confirm_delete('<?php echo U('category/delete','id='.$vo['id']);?>')">删除</a>
+                            <?php endif; ?>
+                            <!--<a class="btn btn-danger btn-xs" href="">终极属性转换</a>-->
+                        </td>
+                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                </tbody>
+            </table>
+        </form>
     </div>
-</form>
+</div>
 
 
         </div>
@@ -274,33 +245,32 @@ $parseData = $form->images($r,''); $file_list = json_decode($vo[$r['field']], tr
 
 
 
+    <script>
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#myform').ajaxForm({
-        success:  complete,  // post-submit callback
-        dataType: 'json'
-    });
-});
+        function sort(id,listorder) {
+            layer.prompt({
+                title: '输入数字，并确认',
+                value: listorder,
+                formType: 0 //prompt风格，支持0-2
+            }, function(num){
+                $.ajax({
+                    url:"<?php echo U('Category/listorder');?>",
+                    data:{
+                        'id':id,
+                        'listorder':num,
+                    },
+                    type:'post',
+                    success:function(data){
+                        layer.msg(data.info);
+                        window.location.reload();
+                    }
+                });
 
-function complete(data){
-    if (data.status == 1) {
-        layer.msg(data.info, {
-            icon: 1,
-            time: 2000 //2秒关闭（如果不配置，默认是3秒）
-        }, function(){
-            window.location.href = "<?php echo (cookie('__forward__')); ?>";
-            return true;
-        });
-    } else {
-        layer.msg(data.info, {
-            icon: 2,
-            time: 2000 //2秒关闭（如果不配置，默认是3秒）
-        });
-    }
-}
-</script>
 
+            });
+        }
+
+    </script>
 
 </body>
 </html>

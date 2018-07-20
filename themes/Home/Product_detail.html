@@ -156,7 +156,7 @@
 					<h3>
 						<ul>
 							<volist name="catemenu" id="vo">
-								<li class="&lt;if condition='$vo.id eq $catid' &gt;chnal_cur&lt;/if&gt;"><a href="{$vo.id}">{$vo.catname}</a></li>
+								<li class="<if condition='$vo.id eq $catid'>chnal_cur</if>"><a href="index.php?g=Home&m=Product&a=plist&id={$vo.id}">{$vo.catname}</a></li>
 							</volist>
 						</ul></h3>
 				</div>
@@ -226,20 +226,7 @@
 									专业为您定制各种规格尺寸样式 400-6189-567 咨询厂家价格
 								</div>
 							</div>
-							<div class="bdsharebuttonbox">
-								<a href="#" class="bds_more" data-cmd="more"></a>
-								<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-								<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-								<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-								<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-								<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-								<a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a>
-								<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-								<a href="#" class="bds_ty" data-cmd="ty" title="分享到天涯社区"></a>
-								<a href="#" class="bds_people" data-cmd="people" title="分享到人民微博"></a>
-								<a href="#" class="bds_isohu" data-cmd="isohu" title="分享到我的搜狐"></a>
-								<a href="#" class="bds_xinhua" data-cmd="xinhua" title="分享到新华微博"></a>
-							</div>
+
 						</div>
 					</div>
 					<div class="sul_dcon">

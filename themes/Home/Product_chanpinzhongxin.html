@@ -124,7 +124,7 @@
                 <div class="chnal_list">
                     <h3><ul>
                         <volist name="catemenu" id="vo">
-                        <li ><a href="">{$vo.catname}</a></li>
+                        <li ><a href="index.php?g=Home&m=Product&a=plist&id={$vo.id}">{$vo.catname}</a></li>
                         </volist>
 
                     </ul></h3>
@@ -172,7 +172,7 @@
             <div class="product">
                 <volist name="catemenu" id="vo">
                 <div class="product_box">
-                    <div class="product_bTop"><h3><span>{$vo.catname}</span></h3><b><a href="http://www.zz-hh.com/product/xianshiping">更多>></a></b></div>
+                    <div class="product_bTop"><h3><span>{$vo.catname}</span></h3><b><a href="index.php?g=Home&m=Product&a=plist&id={$vo.id}">更多>></a></b></div>
                     <div class="clear"></div>
 
                     <div class="product_dList">

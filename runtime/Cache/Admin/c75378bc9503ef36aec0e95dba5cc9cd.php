@@ -107,102 +107,73 @@
                 <?php if(is_array($parent_menu)): $i = 0; $__LIST__ = $parent_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu_li): $mod = ($i % 2 );++$i;?><li><?php echo ($menu_li["name"]); ?></li><?php endforeach; endif; else: echo "" ;endif; ?>
             </ol>
             
-<style>
-    .list-dot{ padding-bottom:10px}
-    .list-dot li,.list-dot-othors li{padding:5px 0; border-bottom:1px dotted #c6dde0; font-family:"宋体"; color:#bbb; position:relative;_height:22px}
-    .list-dot li span,.list-dot-othors li span{color:#004499}
-    .list-dot li a.close span,.list-dot-othors li a.close span{display:none}
-    .list-dot li a.close,.list-dot-othors li a.close{ background: url("/public/images/cross.png") no-repeat left 3px; display:block; width:16px; height:16px;position: absolute;outline:none;right:5px; bottom:5px}
-    .list-dot li a.close:hover,.list-dot-othors li a.close:hover{background-position: left -46px}
-    .list-dot-othors li{float:left;width:24%;overflow:hidden;}
-</style>
 <script type="text/javascript" src="__JS__/jquery.colorpicker.js"></script>
 <script src="__JS__/Sortable.min.js"></script>
 
-<form id="myform" action="<?php echo U($model_name.'/edit');?>" method="post">
+<form id="myform" action="<?php echo U($model_name.'/add');?>" method="post">
     <div class="row">
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading">基本内容</div>
                 <div class="panel-body">
-            <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==1): ?><div class="form-group">
-                        <label class="control-label">
-                            <?php if($r['required']): ?><span class="text-daner">*</span><?php endif; echo ($r["name"]); ?>
-                        </label>
-                        <div id="box_<?php echo ($r['field']); ?>">
-                            <?php if($r['type'] == 'images') : ?>
-<?php
-$parseData = $form->images($r,''); $file_list = json_decode($vo[$r['field']], true); ?>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">最多同时可以上传<?php echo ($r['setup']['upload_maxnum']); ?>张
-                                    <div class="pull-right">
-                                        <a class="btn btn-xs btn-info" href="javascript:swfupload('<?php echo ($r['field']); ?>', '<?php echo ($parseData['yzh_auth']); ?>', up_images);">图片上传</a>
-                                    </div>
-                                </div>
-                                <div id="<?php echo ($r['field']); ?>_images" class="imagesList panel-body">
-                                    <input type="hidden" name="<?php echo ($r['field']); ?>[]" value=""/>
-                                    <input type="hidden" name="<?php echo ($r['field']); ?>_name[]" value="" />
+                <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==1): ?><div class="form-group">
+                    <label class="control-label">
+                        <?php if($r['required']): ?><font color="red">*</font><?php endif; echo ($r["name"]); ?>
+                    </label>
+                    <div id="box_<?php echo ($r['field']); ?>">
+                        <?php if($r['type'] == 'images') : ?>
+            <?php
+ $parseData = $form->images($r); ?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">最多同时可以上传<span class="text-danger"><?php echo ($r['setup']['upload_maxnum']); ?></span>张
+                    <div class="pull-right">
+                        <a class="btn btn-xs btn-info" href="javascript:swfupload('<?php echo ($r['field']); ?>', '<?php echo ($parseData['yzh_auth']); ?>', up_images);">图片上传</a></div>
+                    </div>
+                    <div id="<?php echo ($r['field']); ?>_images" class="imagesList panel-body">
+                        <input type="hidden" name="<?php echo ($r['field']); ?>[]" value=""/>
+                        <input type="hidden" name="<?php echo ($r['field']); ?>_name[]" value="" />
+                    </div>
+                </div>
+            <script>
+            Sortable.create(<?php echo ($r['field']); ?>_images, { handle: "img", animation: 150});
+            </script>
 
-                            <?php if(!empty($file_list)): if(is_array($file_list)): $i = 0; $__LIST__ = $file_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div id="uplistd_<?php echo ($i); ?>">
-                                        <img src="<?php echo ($v['filepath']); ?>"/>
-                                        <input type="hidden" name="<?php echo ($r['field']); ?>[]" value="<?php echo ($v['filepath']); ?>" />
-                                        <div class="image_title">
-                                            <input type="text" class="form-control" placeholder="注释" name="<?php echo ($r['field']); ?>_name[]" value="<?php echo ($v['filename']); ?>" />
-                                        </div>
-                                        <button type="button" onclick="remove_this('uplistd_<?php echo ($i); ?>');" class="close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div><?php endforeach; endif; else: echo "" ;endif; ?>
-                                <?php else: endif; ?>
-
-                                </div>
-                            </div>
-
-                            <script>
-                                Sortable.create(pics_images, {
-                                    handle: "img",
-                                    animation: 150
-                                });
-                            </script>
-                            <?php else :?>
-                                <?php echo (getform($form,$r)); ?>
-                            <?php endif;?>
+                        <?php else :?>
+                            <?php echo (getform($form,$r)); ?>
+                        <?php endif;?>
                         </div>
                     </div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">缩略图</div>
                 <div class="panel-body">
-                    <div class="thumb_box" id="thumb_box">
+                    <div class="thumb_box" id="thumb_box" style="text-align: center">
                         <div id="thumb_aid_box"></div>
                         <a class="thumbnail uploadimg" href="javascript:swfupload('thumb','<?php echo get_yzh_auth(1,'200kb',1);?>',yesdo);">
-                            <img src="<?php if(empty($vo["thumb"])): ?>__IMG__/upload_thumb.png<?php else: echo ($vo['thumb']); endif; ?>" id="thumb_pic" width="135" height="113">
+                            <img src="__IMG__/upload_thumb.png" id="thumb_pic" width="135" height="113">
                         </a>
                         <input type="button" value="取消缩略图" onclick="javascript:clean_thumb('thumb');" class="btn btn-xs btn-primary" />
-                        <input type="hidden" id="thumb" name="thumb" value="<?php echo ($vo['thumb']); ?>" />
+                        <input type="hidden" id="thumb" name="thumb" value="" />
                     </div>
                 </div>
             </div>
 
-
-            <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==0): ?><div class="panel panel-default">
-                        <div class="panel-heading">
-                            <?php if($r['required']): ?><font color="red">*</font><?php endif; echo ($r["name"]); ?>
-                        </div>
-                        <div class="panel-body">
-                            <?php echo (getform($form,$r)); ?>
-                        </div>
-                    </div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+    <?php if(is_array($fields)): $i = 0; $__LIST__ = $fields;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$r): $mod = ($i % 2 );++$i; if(!empty($r['status']) && $r['isbase']==0): ?><div class="panel panel-default">
+                <div class="panel-heading">
+                    <?php if($r['required']): ?><font color="red">*</font><?php endif; echo ($r["name"]); ?>
+                </div>
+                <div class="panel-body">
+                    <?php echo (getform($form,$r)); ?>
+                </div>
+            </div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
 
         </div>
     </div>
-
     <div class="form-actions">
-        <input type="hidden" name="id" value="<?php echo ($vo["id"]); ?>">
-        <input type="hidden" name="forward" value="<?php echo ($_SERVER['HTTP_REFERER']); ?>"/>
         <input type="submit" value="提交" class="btn btn-primary" />
         <input type="reset" value="重置" class="btn btn-primary"/>
     </div>
@@ -276,31 +247,34 @@ $parseData = $form->images($r,''); $file_list = json_decode($vo[$r['field']], tr
 
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#myform').ajaxForm({
-        success:  complete,  // post-submit callback
-        dataType: 'json'
+    $(document).ready(function() {
+        $('#myform').ajaxForm({
+            success:  complete,  // post-submit callback
+            dataType: 'json'
+        });
     });
-});
 
-function complete(data){
-    if (data.status == 1) {
-        layer.msg(data.info, {
-            icon: 1,
-            time: 2000 //2秒关闭（如果不配置，默认是3秒）
-        }, function(){
-            window.location.href = "<?php echo (cookie('__forward__')); ?>";
-            return true;
-        });
-    } else {
-        layer.msg(data.info, {
-            icon: 2,
-            time: 2000 //2秒关闭（如果不配置，默认是3秒）
-        });
+    function complete(data){
+        if (data.status == 1) {
+
+            layer.confirm(data.info, {
+                icon:1,
+                btn: ['继续发布内容','返回列表'] //按钮
+            }, function(){
+                window.location.href = "<?php echo U($model_name.'/add');?>";
+                return false;
+            }, function(){
+                window.location.href = "<?php echo (cookie('__forward__')); ?>";
+                return true;
+            });
+
+        } else {
+            layer.msg(data.info, {icon: 2});
+        }
+
     }
-}
-</script>
 
+</script>
 
 </body>
 </html>
