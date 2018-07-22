@@ -168,13 +168,12 @@
                     <a class="abtn aleft" href="#left" title="上移"></a>
                     <div class="imglist_w">
                         <ul class="imglist">
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-sanlengzhumofang.html" title="三棱柱LED旋转魔方屏"><img width="156" height="114" src="static/picture/mofangguanggaoping.jpg" alt="三棱柱LED旋转魔方屏图片" /> <p class="pro_imgname">三棱柱LED旋转魔方屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-sanjiaoping.html" title="LED旋转三角拼接百变屏"><img width="156" height="114" src="static/picture/sanjiaoping.jpg" alt="LED旋转三角拼接百变屏图片" /> <p class="pro_imgname">LED旋转三角拼接百变屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-ledbianxing.html" title="旋转LED变形展开显示屏"><img width="156" height="114" src="static/picture/ledbianxing.jpg" alt="旋转LED变形展开显示屏图片" /> <p class="pro_imgname">旋转LED变形展开显示屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-yuanzhuping.html" title="升降旋转LED圆柱形显示屏"><img width="156" height="114" src="static/picture/shengjiangping.jpg" alt="升降旋转LED圆柱形显示屏图片" /> <p class="pro_imgname">升降旋转LED圆柱形显示屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xianshiping-tiaowu.html" title="会跳舞的LED显示屏"><img width="156" height="114" src="static/picture/huitiaowuping.jpg" alt="会跳舞的LED显示屏图片" /> <p class="pro_imgname">会跳舞的LED显示屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/tianmu-5d.html" title="室内户外LED5D动感天幕显示屏"><img width="156" height="114" src="static/picture/5dtianmu.jpg" alt="室内户外LED5D动感天幕显示屏图片" /> <p class="pro_imgname">室内户外LED5D动感天幕显示屏</p></a> </li>
-                        </ul>
+                            <notempty name="productinfo">
+                                <volist name="productinfo" id="vv">
+                                    <li style="padding:0 11px;"><a href="index.php?g=home&m=Product&a=detail&id={$vv.id}" title="" target="_blank"><img width="200" height="150" src="{$vv.thumb}" alt="" /><span class="pro_dName">{$vv.title}</span></a></li>
+                                </volist>
+                            </notempty>
+                       </ul>
                     </div>
                     <a class="abtn aright" href="#right" title="下移"></a>
                 </div>
@@ -183,7 +182,7 @@
         <div class="body_r fr">
             <div class="position">
                 <div class="posit_name fl">
-                    <h2>洪海新闻资讯</h2>
+
                 </div>
                 <div class="posit_where fr">
                     <div class="urHere">
@@ -197,38 +196,46 @@
             <div class="content">
                 <div class="news_title"><h1>制作高速路擎天柱高炮广告牌选用网架结构有什么好处</h1></div>
                 <div class="news_infor">
-                    <span>洪海光电集团 www.Zz-Hh.Com</span> <span>浏览数：{$info.hits}</span> <span>发布时间：{$info.createtime|date="Y-m-d H:i:s",###}</span>
+                    <span>浏览数：{$info.hits}</span> <span>发布时间：{$info.createtime|date="Y-m-d H:i:s",###}</span>
                     <br><br>
-                    <div class="com_share"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_ty" data-cmd="ty" title="分享到天涯社区"></a><a href="#" class="bds_people" data-cmd="people" title="分享到人民微博"></a><a href="#" class="bds_isohu" data-cmd="isohu" title="分享到我的搜狐"></a><a href="#" class="bds_xinhua" data-cmd="xinhua" title="分享到新华微博"></a></div></div>
-                </div>
+                    </div>
                 <div class="news_content">
                     {$info.content|htmlspecialchars_decode=###}
                 </div>
                 <div class="pre_next">
-                    <div class="pre_page fl"><span>上一篇：本分类首篇文章</span></div>
-                    <div class="next_page fr"><span>下一篇：</span><a href="http://www.zz-hh.com/news/baike-muqianggeshanping.html" title=" LED幕墙楼体格栅屏施工必知的基本安装知识">LED幕墙楼体格栅屏施工必知的基本安装知识</a></div>
+                    <div class="pre_page fl">
+                        <span>上一篇：</span>
+                        <empty name="pre">
+                            <a >已经是第一个了！</a>
+                            <else/>
+                            <a href="index.php?g=home&m=News&a=detail&id={$pre.id}" title="">{$pre.title}</a>
+                        </empty>
+                    </div>
+                    <div class="next_page fr">
+                        <span>下一篇：</span>
+                        <empty name="next">
+                            <a >已经是最后一个了！</a>
+                            <else/>
+                            <a href="index.php?g=home&m=News&a=detail&id={$next.id}" title="">{$next.title}</a>
+                        </empty>
+                        </div>
                 </div>
                 <div class="ab_news">
+                    <volist name="catemenu" id="vo">
+
                     <div class="ab_Newbox fl">
-                        <div class="ab_Newname">洪海百科文库</div>
+                        <div class="ab_Newname">{$vo.catname}</div>
                         <div class="ab_Newlist">
                             <ul>
-                                <li><span>2018-05-11</span> <a href="http://www.zz-hh.com/news/baike-wangjiaguanggaopai.html" target="_blank" title="制作高速路擎天柱高炮广告牌选用网架结构有什么好处">制作高速路擎天柱高炮广告牌选用网架结构...</a></li>
-                                <li><span>2018-05-04</span> <a href="http://www.zz-hh.com/news/baike-muqianggeshanping.html" target="_blank" title="LED幕墙楼体格栅屏施工必知的基本安装知识">LED幕墙楼体格栅屏施工必知的基本安装知识</a></li>
-                                <li><span>2018-04-26</span> <a href="http://www.zz-hh.com/news/baike-jixiemuqiang.html" target="_blank" title="建筑机械幕墙安全施工质量如何把控">建筑机械幕墙安全施工质量如何把控</a></li>
+                                <volist name="vo.sonlist" id="vv">
+                                    <li><span>{$vv.createtime|date="Y-m-d",###}</span> <a href="index.php?g=home&m=News&a=detail&id={$vv.id}" target="_blank" title="">{$vv.title|substr=0,30}</a></li>
+                                </volist>
+
                             </ul>
                         </div>
                     </div>
-                    <div class="ab_Newbox fr">
-                        <div class="ab_Newname">洪海公司动态</div>
-                        <div class="ab_Newlist">
-                            <ul>
-                                <li><span>2018-04-19</span> <a href="http://www.zz-hh.com/news/dongtai-guanggaozhanshipai.html" target="_blank" title="确认过眼神，让你眼前一亮的创意广告展示牌就在洪海">确认过眼神，让你眼前一亮的创意广告展示...</a></li>
-                                <li><span>2018-04-12</span> <a href="http://www.zz-hh.com/news/dongtai-shimianfanlasiweijiasi.html" target="_blank" title="洪海机械翻页十面翻广告展示牌助力拉斯维加斯展会">洪海机械翻页十面翻广告展示牌助力拉斯维...</a></li>
-                                <li><span>2018-02-09</span> <a href="http://www.zz-hh.com/news/dongtai-zhankaipinglinyi.html" target="_blank" title="洪海LED旋转魔方展开屏-智能创意显示屏中的“变形金刚”">洪海LED旋转魔方展开屏-智能创意显示...</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    </volist>
+
                 </div>
 
             </div>
@@ -344,57 +351,6 @@
 <script type="text/javascript" src="__PUBLIC__/hh/static/js/transform.js"></script>
 <script language="JavaScript" src="__PUBLIC__/hh/static/js/954473.js" type="text/javascript" charset="utf-8"></script>
 <div style="display:none">
-    <script>
-        (function(){
-            var bp = document.createElement('script');
-            var curProtocol = window.location.protocol.split(':')[0];
-            if (curProtocol === 'https') {
-                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-            }
-            else {
-                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-            }
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-        })();
-    </script>
-    <script type="text/javascript">
-        function addCopyright() {
-            var Original = "原文链接：" + location.href + " @洪海光电集团";
-            if ("function" == typeof window.getSelection) {
-                var c = window.getSelection();
-                if ("Microsoft Internet Explorer" == navigator.appName && navigator.appVersion.match(/MSIE ([\d.]+)/)[1] >= 10 || "Opera" == navigator.appName) {
-                    var g = c.getRangeAt(0),
-                            h = document.createElement("span");
-                    h.appendChild(g.cloneContents()),
-                            g.insertNode(h);
-                    var i = h.innerHTML.replace(/(?:\n|\r\n|\r)/gi, "").replace(/<\s*script[^>]*>[\s\S]*?<\/script>/gim, "").replace(/<\s*style[^>]*>[\s\S]*?<\/style>/gim, "").replace(/<!--.*?-->/gim, "").replace(/<!DOCTYPE.*?>/gi, "");
-                    try {
-                        document.getElementsByTagName("body")[0].removeChild(h)
-                    } catch(f) {
-                        h.style.display = "none",
-                                h.innerHTML = ""
-                    }
-                } else var d = "" + c;
-                var e = document.getElementsByTagName("body")[0],
-                        f = document.createElement("div");
-                f.style.position = "absolute",
-                        f.style.left = "-99999px",
-                        e.appendChild(f),
-                        f.innerHTML = d.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, "$1<br />$2") + "<br />" + Original,
-                        c.selectAllChildren(f),
-                        setTimeout(function() {
-                                    e.removeChild(f)
-                                },
-                                0)
-            } else if ("object" == typeof document.selection.createRange) {
-                event.returnValue = !1;
-                var c = document.selection.createRange().text;
-                window.clipboardData.setData("Text", c + "\n" + Original)
-            }
-        };
-        document.body.oncopy = addCopyright;
-    </script>
 </div>
 </body>
 </html>

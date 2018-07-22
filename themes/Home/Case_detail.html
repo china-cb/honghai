@@ -215,11 +215,19 @@
         <div class="pre_next">
             <div class="pre_page fl">
                 <span>上一案例：</span>
-                <a href="http://www.zz-hh.com/case/sanmianfan-zhangjiajiehunan.html" title="湖南张家界弧形门头三面翻广告牌">湖南张家界弧形门头三面翻广告牌</a>
+                <empty name="pre">
+                    <a >已经是第一个了！</a>
+                    <else/>
+                <a href="index.php?g=home&m=Case&a=detail&id={$pre.id}" title="">{$pre.title}</a>
+                </empty>
             </div>
             <div class="next_page fr">
                 <span>下一案例：</span>
-                <a href="http://www.zz-hh.com/case/sanmianfan-shangqiuhenanlm.html" title="河南商丘叉路口三面翻楼面广告牌">河南商丘叉路口三面翻楼面广告牌</a>
+                <empty name="next">
+                    <a >已经是最后一个了！</a>
+                    <else/>
+                    <a href="index.php?g=home&m=Case&a=detail&id={$next.id}" title="">{$next.title}</a>
+                </empty>
             </div>
         </div>
         <div class="case_about">
@@ -235,62 +243,18 @@
                 </div>
                 <div class="case_abList">
                     <ul>
+                        <notempty name="caseinfo">
+                            <volist name="caseinfo" id="vv">
                         <li>
                             <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-zhangjiajiehunan.html" title="湖南张家界弧形门头三面翻广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180612dflink_1.jpg" alt="湖南张家界弧形门头三面翻广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-zhangjiajiehunan.html" title="湖南张家界弧形门头三面翻广告牌项目工程案例"> </a>
+                                <a href="index.php?g=home&m=Case&a=detail&id={$vv.id}" title=""><img width="150" height="100" src="{$vv.thumb}" alt="" /></a>
+                            </div><a href="index.php?g=home&m=Case&a=detail&id={$vv.id}" title=""> </a>
                             <div class="case_Name_title">
-                                <a>湖南张家界弧形门头三...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-weifangshandongcc.html" title="山东潍坊超长三面翻户外楼顶广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180510qwnjzd_1.jpg" alt="山东潍坊超长三面翻户外楼顶广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-weifangshandongcc.html" title="山东潍坊超长三面翻户外楼顶广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>山东潍坊超长三面翻户...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-shangqiuhenanlm.html" title="河南商丘叉路口三面翻楼面广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180507sxfjvv_1.jpg" alt="河南商丘叉路口三面翻楼面广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-shangqiuhenanlm.html" title="河南商丘叉路口三面翻楼面广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>河南商丘叉路口三面翻...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-suzhoujiangsusc.html" title="江苏苏州外墙分段三面翻商场广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180504xlvvil_1.jpg" alt="江苏苏州外墙分段三面翻商场广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-suzhoujiangsusc.html" title="江苏苏州外墙分段三面翻商场广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>江苏苏州外墙分段三面...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-rizhaoshandongms.html" title="山东日照门市房顶三面翻广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180501nvvigr.jpg" alt="山东日照门市房顶三面翻广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-rizhaoshandongms.html" title="山东日照门市房顶三面翻广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>山东日照门市房顶三面...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-shangqiuhenands.html" title="河南商丘楼面分段三面翻大厦广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180427ggnffw.jpg" alt="河南商丘楼面分段三面翻大厦广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-shangqiuhenands.html" title="河南商丘楼面分段三面翻大厦广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>河南商丘楼面分段三面...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-lianyungangjiangsugjg.html" title="江苏连云港楼体钢结构三面翻挂墙广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180425hbnqyl.jpg" alt="江苏连云港楼体钢结构三面翻挂墙广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-lianyungangjiangsugjg.html" title="江苏连云港楼体钢结构三面翻挂墙广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>江苏连云港楼体钢结构...</a>
-                            </div> </li>
-                        <li>
-                            <div class="case_abimg fl">
-                                <a href="http://www.zz-hh.com/case/sanmianfan-linyishandongcz.html" title="山东临沂车站三面翻大厅广告牌项目工程案例"><img width="150" height="100" src="static/picture/20180423pxdndg.jpg" alt="山东临沂车站三面翻大厅广告牌施工图片" /></a>
-                            </div><a href="http://www.zz-hh.com/case/sanmianfan-linyishandongcz.html" title="山东临沂车站三面翻大厅广告牌项目工程案例"> </a>
-                            <div class="case_Name_title">
-                                <a>山东临沂车站三面翻大...</a>
-                            </div> </li>
+                                <a>{$vv.title}</a>
+                            </div>
+                        </li>
+                            </volist>
+                        </notempty>
                     </ul>
                 </div>
             </div>

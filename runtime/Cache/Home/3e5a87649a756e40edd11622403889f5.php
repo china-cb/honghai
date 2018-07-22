@@ -166,12 +166,7 @@
                     <a class="abtn aleft" href="#left" title="上移"></a>
                     <div class="imglist_w">
                         <ul class="imglist">
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-sanlengzhumofang.html" title="三棱柱LED旋转魔方屏"><img width="156" height="114" src="static/picture/mofangguanggaoping.jpg" alt="三棱柱LED旋转魔方屏图片" /> <p class="pro_imgname">三棱柱LED旋转魔方屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-sanjiaoping.html" title="LED旋转三角拼接百变屏"><img width="156" height="114" src="static/picture/sanjiaoping.jpg" alt="LED旋转三角拼接百变屏图片" /> <p class="pro_imgname">LED旋转三角拼接百变屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-ledbianxing.html" title="旋转LED变形展开显示屏"><img width="156" height="114" src="static/picture/ledbianxing.jpg" alt="旋转LED变形展开显示屏图片" /> <p class="pro_imgname">旋转LED变形展开显示屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xuanzhuan-yuanzhuping.html" title="升降旋转LED圆柱形显示屏"><img width="156" height="114" src="static/picture/shengjiangping.jpg" alt="升降旋转LED圆柱形显示屏图片" /> <p class="pro_imgname">升降旋转LED圆柱形显示屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/xianshiping-tiaowu.html" title="会跳舞的LED显示屏"><img width="156" height="114" src="static/picture/huitiaowuping.jpg" alt="会跳舞的LED显示屏图片" /> <p class="pro_imgname">会跳舞的LED显示屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/product/tianmu-5d.html" title="室内户外LED5D动感天幕显示屏"><img width="156" height="114" src="static/picture/5dtianmu.jpg" alt="室内户外LED5D动感天幕显示屏图片" /> <p class="pro_imgname">室内户外LED5D动感天幕显示屏</p></a> </li>
+                            <?php if(!empty($productinfo)): if(is_array($productinfo)): $i = 0; $__LIST__ = $productinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li style="padding:0 11px;"><a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($vv["id"]); ?>" title="" target="_blank"><img width="200" height="150" src="<?php echo ($vv["thumb"]); ?>" alt="" /><span class="pro_dName"><?php echo ($vv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
                         </ul>
                     </div>
                     <a class="abtn aright" href="#right" title="下移"></a>
@@ -217,16 +212,11 @@
             <div class="pager">
                 <div class="pager">
                     总计
-                    <b>35</b> 个记录，共
-                    <font color="blue">4</font> 页，当前第
-                    <font color="red">1</font> 页 |
-                    <a href="http://www.zz-hh.com/news/dongtai/o1/">第一页</a> 上一页
-                    <a href="http://www.zz-hh.com/news/dongtai/o1/" style="color:red;font-weight:bold">1</a>
-                    <a href="http://www.zz-hh.com/news/dongtai/o2/">2</a>
-                    <a href="http://www.zz-hh.com/news/dongtai/o3/">3</a>
-                    <a href="http://www.zz-hh.com/news/dongtai/o4/">4</a>
-                    <a href="http://www.zz-hh.com/news/dongtai/o2/">下一页</a>
-                    <a href="http://www.zz-hh.com/news/dongtai/o4/">最末页</a>
+                    <b><?php echo ($totalCount); ?></b> 个记录，共
+                    <font color="blue"><?php echo ($numPerPage); ?>
+                    </font> 页，当前第
+                    <font color="red"><?php echo ($currentPage); ?></font> 页 |
+                    <?php echo ($pages); ?>
                 </div>
             </div>
         </div>

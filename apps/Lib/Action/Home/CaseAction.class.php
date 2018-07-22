@@ -21,18 +21,26 @@ class CaseAction extends PublicAction {
         $this->assign("catemenu",$cateinfo);
 
         $model =  M("product");
-        $count = $model->where($map)->count();
+        $number = $model->where($map)->count();
+        if($number) {
 
-        if($count) {
-            import("@.ORG.Page");
-            $page = new Page($count, 12);
-            $pages = $page->show();
+            import("@.ORG.Util.Page");
+            if((!empty($_REQUEST[numPerPage]))&&($_REQUEST[numPerPage]!=0))
+            {
+                $p = new Page($number, $_REQUEST[numPerPage]);
+            }
+            else
+            {
+                $p = new Page($number, 12);
+            }
+            $this->assign("totalCount", $p->totalRows);
+            $this->assign("numPerPage", $p->listRows);
+            $this->assign("currentPage", $p->nowPage);
+            $pages = $p->show();
 
             //$field = 'id,userid,url,title,keywords,description,thumb,createtime';
 
-            $list = $model->where($map)->order('id desc')->limit($page->firstRow . ',' . $page->listRows)->select();
-           // echo $model->getLastSql();
-            //dump($list);
+            $list = $model->where($map)->order('id desc')->limit($p->firstRow . ',' . $p->listRows)->select();
             $this->assign('pages', $pages);
             $this->assign('list', $list);
         }
@@ -53,6 +61,15 @@ class CaseAction extends PublicAction {
         $this->assign("catid",$info['catid']);     //分类ID
         $this->assign("info",$info);                //产品详情
         $this->assign("picinfo",$picinfo);          //图片列表
+        $caseinfo = $this->getcaseinfo($info['catid']);            //相关案例
+        $this->assign("caseinfo",$caseinfo);
+
+        //上一个
+        $pre = M("product")->where(["id"=>array("lt",$info['id']),"catid"=>$info['catid']])->order("id desc")->limit("0,1")->find();
+        //下一个
+        $next = M("product")->where(["id"=>array("gt",$info['id']),"catid"=>$info['catid']])->order("id desc")->limit("0,1")->find();
+        $this->assign("pre",$pre);
+        $this->assign("next",$next);
         $this->display();
     }
 

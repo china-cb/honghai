@@ -167,11 +167,10 @@
                     <a class="abtn aleft" href="#left" title="上移"></a>
                     <div class="imglist_w">
                         <ul class="imglist">
-                            <li> <a target="_blank" href="http://www.zz-hh.com/case/sanmianfan-zhangjiajiehunan.html" title="湖南张家界弧形门头三面翻广告牌"><img width="156" height="114" src="static/picture/20180612dflink.jpg" alt="湖南张家界弧形门头三面翻广告牌图片" /> <p class="pro_imgname">湖南张家界弧形门头三面翻广告牌</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/case/gaopao-eerduosineimenggu.html" title="内蒙古鄂尔多斯LED三角旋转魔方柱屏"><img width="156" height="114" src="static/picture/20180515dfmfhf.jpg" alt="内蒙古鄂尔多斯LED三角旋转魔方柱屏图片" /> <p class="pro_imgname">内蒙古鄂尔多斯LED三角旋转魔方柱屏</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/case/sanmianfan-weifangshandongcc.html" title="山东潍坊超长三面翻户外楼顶广告牌"><img width="156" height="114" src="static/picture/20180510qwnjzd.jpg" alt="山东潍坊超长三面翻户外楼顶广告牌图片" /> <p class="pro_imgname">山东潍坊超长三面翻户外楼顶广告牌</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/case/sanmianfan-shangqiuhenanlm.html" title="河南商丘叉路口三面翻楼面广告牌"><img width="156" height="114" src="static/picture/20180507sxfjvv.jpg" alt="河南商丘叉路口三面翻楼面广告牌图片" /> <p class="pro_imgname">河南商丘叉路口三面翻楼面广告牌</p></a> </li>
-                            <li> <a target="_blank" href="http://www.zz-hh.com/case/sanmianfan-suzhoujiangsusc.html" title="江苏苏州外墙分段三面翻商场广告牌"><img width="156" height="114" src="static/picture/20180504xlvvil.jpg" alt="江苏苏州外墙分段三面翻商场广告牌图片" /> <p class="pro_imgname">江苏苏州外墙分段三面翻商场广告牌</p></a> </li>
+                            <?php if(!empty($caseinfo)): if(is_array($caseinfo)): $i = 0; $__LIST__ = $caseinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li>
+                                        <a target="_blank" href="index.php?g=home&m=Case&a=detail&id=<?php echo ($vv["id"]); ?>" title=""><img width="156" height="114" src="<?php echo ($vv["thumb"]); ?>" alt="" />
+                                            <p class="pro_imgname"><?php echo ($vv["title"]); ?></p></a>
+                                    </li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
                         </ul>
                     </div>
                     <a class="abtn aright" href="#right" title="下移"></a>
@@ -204,7 +203,12 @@
                         <div class="clear"></div>
                         <div class="pager">
                             <div class="pager">
-                               <?php echo ($pages); ?>
+                                总计
+                                <b><?php echo ($totalCount); ?></b> 个记录，共
+                                <font color="blue"><?php echo ($numPerPage); ?>
+                                </font> 页，当前第
+                                <font color="red"><?php echo ($currentPage); ?></font> 页 |
+                                <?php echo ($pages); ?>
                             </div>
                         </div>
                     </div>
@@ -323,10 +327,7 @@
 <script type="text/javascript" src="__PUBLIC__/hh/static/js/transform.js"></script>
 <script language="JavaScript" src="__PUBLIC__/hh/static/js/954473.js" type="text/javascript" charset="utf-8"></script>
 <div style="display:none">
-    <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?2a445adb71c7d96c54e32624ded8f3e9"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259764806'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259764806%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-    <script>
+   <script>
         (function(){
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];

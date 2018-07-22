@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -123,9 +123,7 @@
                 <div class="chnal_top"><h5>产品分类<span>Products</span></h5></div>
                 <div class="chnal_list">
                     <h3><ul>
-                        <volist name="catemenu" id="vo">
-                        <li ><a href="index.php?g=Home&m=Product&a=plist&id={$vo.id}">{$vo.catname}</a></li>
-                        </volist>
+                        <?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li ><a href="index.php?g=Home&m=Product&a=plist&id=<?php echo ($vo["id"]); ?>"><?php echo ($vo["catname"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 
                     </ul></h3>
                 </div>
@@ -137,14 +135,10 @@
                     <a class="abtn aleft" href="#left" title="上移"></a>
                     <div class="imglist_w">
                         <ul class="imglist">
-                            <notempty name="caseinfo">
-                                <volist name="caseinfo" id="vv">
-                            <li>
-                                <a target="_blank" href="index.php?g=home&m=Case&a=detail&id={$vv.id}" title=""><img width="156" height="114" src="{$vv.thumb}" alt="" />
-                                    <p class="pro_imgname">{$vv.title}</p></a>
-                            </li>
-                                </volist>
-                            </notempty>
+                            <?php if(!empty($caseinfo)): if(is_array($caseinfo)): $i = 0; $__LIST__ = $caseinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li>
+                                <a target="_blank" href="index.php?g=home&m=Case&a=detail&id=<?php echo ($vv["id"]); ?>" title=""><img width="156" height="114" src="<?php echo ($vv["thumb"]); ?>" alt="" />
+                                    <p class="pro_imgname"><?php echo ($vv["title"]); ?></p></a>
+                            </li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
 
                         </ul>
                     </div>
@@ -159,23 +153,17 @@
         <div class="clear"></div>
         <div class="content">
             <div class="product">
-                <volist name="catemenu" id="vo">
-                <div class="product_box">
-                    <div class="product_bTop"><h3><span>{$vo.catname}</span></h3><b><a href="index.php?g=Home&m=Product&a=plist&id={$vo.id}">更多>></a></b></div>
+                <?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="product_box">
+                    <div class="product_bTop"><h3><span><?php echo ($vo["catname"]); ?></span></h3><b><a href="index.php?g=Home&m=Product&a=plist&id=<?php echo ($vo["id"]); ?>">更多>></a></b></div>
                     <div class="clear"></div>
 
                     <div class="product_dList">
                         <ul>
-                            <notempty name="vo.sonlist">
-                                <volist name="vo.sonlist" id="vv">
-                                    <li><a href="index.php?g=home&m=Product&a=detail&id={$vv.id}" title="会跳舞的LED显示屏制作" target="_blank"><img width="224" height="164" src="{$vv.thumb}" alt="会跳舞的LED显示屏制作效果图片" /><span class="pro_dName">{$vv.title}</span></a></li>
-                                </volist>
-                            </notempty>
+                            <?php if(!empty($vo["sonlist"])): if(is_array($vo["sonlist"])): $i = 0; $__LIST__ = $vo["sonlist"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li><a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($vv["id"]); ?>" title="会跳舞的LED显示屏制作" target="_blank"><img width="224" height="164" src="<?php echo ($vv["thumb"]); ?>" alt="会跳舞的LED显示屏制作效果图片" /><span class="pro_dName"><?php echo ($vv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
                         </ul>
                     </div>
 
-                </div>
-                </volist>
+                </div><?php endforeach; endif; else: echo "" ;endif; ?>
 
             </div>
         </div>

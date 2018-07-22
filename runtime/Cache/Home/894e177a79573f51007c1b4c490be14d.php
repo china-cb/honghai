@@ -164,183 +164,127 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-9" id="rightBox">
-                <div class="productBox">
-                    <div class="list">
-                        <?php
- $_result=M("Product")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1532227175 AND status=1  AND catid in(7,14,53,63,15,64,16,68,69,70,71,72,73) AND posid like '%-1-%'")->order("id desc")->limit("6")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><div class="col-xs-6 col-sm-6 col-md-4 col-mm-6">
-                                <div class="productImg">
-                                    <a href="<?php echo ($r["url"]); ?>" title="<?php echo ($r["title"]); ?>">
-                                        <img src="<?php echo ($r["thumb"]); ?>" alt="<?php echo ($r["title"]); ?>">
-                                    </a>
-                                    <span>
-                                        <?php echo (str_cut($r["title"],15)); ?>
-                                    </span>
-                                    <a class="productTitle" href="<?php echo ($r["url"]); ?>" title="<?php echo ($r["title"]); ?>">
-                                        查看详情
-                                    </a>
-                                </div>
-                            </div><?php
- } } ?>
+            <!-- right -->
+            <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                <div class="positionBox">
+    <div class="titleBar">
+        <h5>
+            当前位置
+        </h5>
+        <span>
+            <a href="/">
+                首页
+            </a>
+            >
+            <?php
+ $ci=0; $arrparentid = array_filter(explode(',', $Cats[$catid]['arrparentid'].','.$catid)); foreach($arrparentid as $cid){ $ci=$ci+1; if(count($arrparentid)==$ci){ $class="bc"; } $parsestr[] = '<a class="'.$class.'" href="'.$Cats[$cid]['url'].'">'.$Cats[$cid]['catname'].'</a>'; } echo implode(" > ",$parsestr); ?>
+            </a>
+        </span>
+    </div>
+</div>
+                <div class="list_box">
+                    <div class="contents">
+                        <?php if(!empty($content)): echo ($content); ?>
+                            <?php else: ?>
+                            <?php echo ($catname); endif; ?>
+                        <div>
+                            <br />
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- left -->
             <div class="col-xs-12 col-sm-4 col-md-3">
-                <div id="classification">
-                    <div class="navigationBox homeNavigation">
-                        <div class="classTitleBar">
-                            产品分类
-                        </div>
-                        <div class="list">
-                            <ul id="firstpane" class="indexFirstpane">
-                                <?php
- $count=0; foreach ($Cats as $keyy=>$vy) { if($vy["ismenu"]==1 && intval(7)==$vy["parentid"]) { $count++; } } $n=0; foreach ($Cats as $key=>$r) { if( $r['ismenu']==1 && intval(7)==$r["parentid"]) { ++$n; ?><li>
-                                        <a class="" target="_self" href="<?php echo ($r["url"]); ?>">
-                                            <?php echo ($r["catname"]); ?>
-                                        </a>
-                                        <span>
-                                            +
-                                        </span>
-                                        <ul>
-                                            <?php
- $count=0; foreach ($Cats as $keyy=>$vy) { if($vy["ismenu"]==1 && intval($r['id'])==$vy["parentid"]) { $count++; } } $n=0; foreach ($Cats as $key=>$rr) { if( $rr['ismenu']==1 && intval($r['id'])==$rr["parentid"]) { ++$n; ?><li>
-                                                    <a class="" target="_self" href="<?php echo ($rr["url"]); ?>">
-                                                        <?php echo ($rr["catname"]); ?>
-                                                    </a>
-                                                </li><?php
- } } ?>
-                                        </ul>
-                                    </li><?php
- } } ?>
-                            </ul>
-                        </div>
-                        <div class="telBox">
-                            <img src="<?php echo ($site_tel); ?>" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="navigationBox" id="classification">
+        <div class="classTitleBar">
+            <?php echo ($max_parent_catname); ?>
         </div>
-    </div>
-    <div class="aboutBg" style="background-image:url(<?php echo ($site_aboutpic); ?>)">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="aboutBox">
-                        <section>
-                            <img src="<?php echo ($site_about); ?>" alt="" />
-                            <p class="aboutContent">
-                                <span>
-                                    <span style="white-space:normal;">
-                                        <?php echo ($block[20]); ?>
-                                    </span>
-                                    <br />
-                                </span>
-                            </p>
-                            <a href="<?php echo ($Cats[17][url]); ?>" class="aboutMore">
-                                了解我们更多&gt;&gt;
-                            </a>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="margin-bottom: 20px;">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-8">
-                <div class="newsBox">
-                    <?php
- $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1532227175 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("1")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><div class="titleBar">
-                            <h5>
-                                热点新闻
-                            </h5>
-                            <span>
-                                NEWS CENTER
-                            </span>
-                            <a class="rightMore" href="<?php echo ($Cats[5][url]); ?>">
-                                +More
-                            </a>
-                        </div><?php
- } } ?>
-                    <div class="firstNewsBox">
-                        <img src="<?php echo ($r["thumb"]); ?>" />
-                        <span>
-                            <a href="<?php echo ($r["url"]); ?>">
-                                <?php echo ($r["title"]); ?>
-                            </a>
-                        </span>
-                        <p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo ($r["description"]); ?>
-                        </p>
-                        <span>
-                            <a href="<?php echo ($r["url"]); ?>" class="more">
-                                查看详情 >>
-                            </a>
-                        </span>
-                    </div>
-                    <ul class="newsList">
-                        <?php
- $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1532227175 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("4")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><li class="col-xs-12 col-sm-12 col-md-6">
-                                <a href="<?php echo ($r["url"]); ?>" title="<?php echo ($r["title"]); ?>">
-                                    <?php echo ($r["title"]); ?>
-                                </a>
-                            </li><?php
- } } ?>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <div class="contactBox">
-                    <div class="titleBar">
-                        <h5>
-                            联系方式
-                        </h5>
-                        <span>
-                            CONTACT US
-                        </span>
-                        <a class="rightMore" href="<?php echo ($Cats[24][url]); ?>">
-                            +More
+        <div class="list">
+            <ul id="firstpane">
+                <?php
+ $count=0; foreach ($Cats as $keyy=>$vy) { if($vy["ismenu"]==1 && intval()==$vy["parentid"]) { $count++; } } $n=0; foreach ($Cats as $key=>$r) { if( $r['ismenu']==1 && intval()==$r["parentid"]) { ++$n; ?><li>
+                        <?php if($catid==$r['id']) : ?>
+                        <a class="firstSelected selected" target="_self" href="<?php echo ($r["url"]); ?>">
+                            <?php echo ($r["catname"]); ?>
                         </a>
-                    </div>
-                    <p style="white-space:normal;">
-                        <span style="line-height:1.5;">
-                            手机：<?php echo ($site_phone); ?>
-                        </span>
-                    </p>
-                    <p style="white-space:normal;">
-                        联系人：<?php echo ($site_lxr); ?>
-                    </p>
-                    <p style="white-space:normal;">
-                        邮箱：<?php echo ($site_email); ?>
-                    </p>
-                    <p style="white-space:normal;">
-                        地址：<?php echo ($site_address); ?>
-                    </p>
-                </div>
-                <div class="btn-group dropup" style="margin-bottom: 15px;">
-                    <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown"
-                    aria-expanded="false" style="line-height: 13px;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;友情链接&nbsp;&nbsp;&nbsp;&nbsp;
-                    </button>
-                    <button type="button" class="btn btn-default dropdown-toggle btn-sm" style="line-height: 13px;">
-                        <span class="caret">
-                        </span>
-                        <span class="sr-only">
-                            友情链接
-                        </span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <?php
- $_result=M("Link")->field("*")->where(" status = 1  and typeid=0 and  linktype=1")->order("id desc")->limit("20")->select();;$count=count($_result); if ($_result){ $i=0; foreach ($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><li>
-                                <a href="<?php echo ($r["siteurl"]); ?>" target="_blank">
-                                    <?php echo ($r["name"]); ?>
-                                </a>
-                            </li><?php
+                        <?php else :?>
+                        <a class="" target="_self" href="<?php echo ($r["url"]); ?>">
+                            <?php echo ($r["catname"]); ?>
+                        </a>
+                        <?php endif;?>
+                    </li><?php
  } } ?>
-                    </ul>
-                </div>
-            </div>
+            </ul>
+        </div>
+    </div>
+    <div class="newsBox">
+        <div class="titleBar">
+            <h5>
+                热点新闻
+            </h5>
+            <span>
+                NEWS CENTER
+            </span>
+        </div>
+        <ul class="newsList">
+            <?php
+ $_result=M("Article")->field("id,catid,url,title,title_style,keywords,description,thumb,createtime")->where("createtime<=1532179896 AND status=1  AND catid in(5,11,52,12,13) AND posid like '%-1-%'")->order("id desc")->limit("4")->select(); if ($_result) { $i=0; $total = count($_result); foreach($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><li>
+                    <a href="<?php echo ($r["url"]); ?>" title="<?php echo ($r["title"]); ?>">
+                        <?php echo ($r["title"]); ?>
+                    </a>
+                </li><?php
+ } } ?>
+        </ul>
+    </div>
+    <div class="contactBox">
+        <div class="titleBar">
+            <h5>
+                联系方式
+            </h5>
+            <span>
+                CONTACT US
+            </span>
+        </div>
+        <p style="white-space:normal;">
+            <span style="line-height:1.5;">
+                手机：<?php echo ($site_phone); ?>
+            </span>
+        </p>
+        <p style="white-space:normal;">
+            联系人：<?php echo ($site_lxr); ?>
+        </p>
+        <p style="white-space:normal;">
+            邮箱：<?php echo ($site_email); ?>
+        </p>
+        <p style="white-space:normal;">
+            地址：<?php echo ($site_address); ?>
+        </p>
+    </div>
+    <div class="btn-group dropup" style="margin-bottom: 15px;">
+        <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown"
+        aria-expanded="false" style="line-height: 13px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;友情链接&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+        <button type="button" class="btn btn-default dropdown-toggle btn-sm" style="line-height: 13px;">
+            <span class="caret">
+            </span>
+            <span class="sr-only">
+                友情链接
+            </span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <?php
+ $_result=M("Link")->field("*")->where(" status = 1  and typeid=0 and  linktype=1")->order("id desc")->limit("20")->select();;$count=count($_result); if ($_result){ $i=0; foreach ($_result as $key=>$r) { ++$i; $mod = ($i % 2 ); ?><li>
+                    <a href="<?php echo ($r["siteurl"]); ?>" target="_blank">
+                        <?php echo ($r["name"]); ?>
+                    </a>
+                </li><?php
+ } } ?>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
         </div>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom footer_nav">

@@ -327,3 +327,6 @@ a.aright:hover{ background:url(../images/recom_dho.jpg) no-repeat;}
 .f_dlink a{ padding:0 6px;}
 
 .f_dlink{ padding-bottom:50px;}
+
+.pager .current{ background-color: #216dc1;
+    color: #FFF;}

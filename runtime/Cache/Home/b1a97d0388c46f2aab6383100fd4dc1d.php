@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -155,9 +155,7 @@
 				<div class="chnal_list">
 					<h3>
 						<ul>
-							<volist name="catemenu" id="vo">
-								<li class="<if condition='$vo.id eq $catid'>chnal_cur</if>"><a href="index.php?g=Home&m=Product&a=plist&id={$vo.id}">{$vo.catname}</a></li>
-							</volist>
+							<?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="<?php if($vo["id"] == $catid): ?>chnal_cur<?php endif; ?>"><a href="index.php?g=Home&m=Product&a=plist&id=<?php echo ($vo["id"]); ?>"><?php echo ($vo["catname"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 						</ul></h3>
 				</div>
 			</div>
@@ -170,14 +168,10 @@
 					<a class="abtn aleft" href="#left" title="上移"></a>
 					<div class="imglist_w">
 						<ul class="imglist">
-							<notempty name="caseinfo">
-								<volist name="caseinfo" id="vv">
-									<li>
-										<a target="_blank" href="index.php?g=home&m=Case&a=detail&id={$vv.id}" title=""><img width="156" height="114" src="{$vv.thumb}" alt="" />
-											<p class="pro_imgname">{$vv.title}</p></a>
-									</li>
-								</volist>
-							</notempty>
+							<?php if(!empty($caseinfo)): if(is_array($caseinfo)): $i = 0; $__LIST__ = $caseinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li>
+										<a target="_blank" href="index.php?g=home&m=Case&a=detail&id=<?php echo ($vv["id"]); ?>" title=""><img width="156" height="114" src="<?php echo ($vv["thumb"]); ?>" alt="" />
+											<p class="pro_imgname"><?php echo ($vv["title"]); ?></p></a>
+									</li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
 						</ul>
 					</div>
 					<a class="abtn aright" href="#right" title="下移"></a>
@@ -187,7 +181,7 @@
 		<div class="body_r fr">
 			<div class="position">
 				<div class="posit_name fl">
-					<h2>{$info.title}</h2>
+					<h2><?php echo ($info["title"]); ?></h2>
 				</div>
 				<div class="posit_where fr">
 					<div class="urHere">
@@ -206,17 +200,17 @@
 						<div class="zoom-section">
 							<div class="pro_Tleft">
 								<div class="zoom-small-image">
-									<img width="360" height="276" src="{$info.thumb}" alt="三棱柱LED旋转魔方屏制作效果图片" />
+									<img width="360" height="276" src="<?php echo ($info["thumb"]); ?>" alt="三棱柱LED旋转魔方屏制作效果图片" />
 								</div>
 							</div>
 							<div class="zoom-desc">
-								<h1>{$info.title}</h1>
+								<h1><?php echo ($info["title"]); ?></h1>
 								<div class="pro_infmore">
 									<div class="pro_Tintro">
 										<dl>
 											<dt>
 											<div>
-												<p><span>{$info.description}</span></p>
+												<p><span><?php echo ($info["description"]); ?></span></p>
 											</div>
 											</dt>
 										</dl>
@@ -246,18 +240,14 @@
 						<div class="clear"></div>
 						<div class="sul_content">
 						<div class="show">
-							{$info.content|htmlspecialchars_decode=###}
+							<?php echo (htmlspecialchars_decode($info["content"])); ?>
 						</div>
 						<div class="hide">
-							{$info.parameter|htmlspecialchars_decode=###}
+							<?php echo (htmlspecialchars_decode($info["parameter"])); ?>
 						</div>
 						<div class="hide">
 							<div class="product_dList">
-								<notempty name="picinfo">
-								<volist name="picinfo" id="vv">
-									<li style="padding:0 11px;"> <a href="{$vv.filepath}" class="lightbox" rel="group1" title="三棱柱LED旋转魔方屏图集"><img width="200" height="150" src="{$vv.filepath}" alt="" /></a> </li>
-								</volist>
-								</notempty>
+								<?php if(!empty($picinfo)): if(is_array($picinfo)): $i = 0; $__LIST__ = $picinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li style="padding:0 11px;"> <a href="<?php echo ($vv["filepath"]); ?>" class="lightbox" rel="group1" title="三棱柱LED旋转魔方屏图集"><img width="200" height="150" src="<?php echo ($vv["filepath"]); ?>" alt="" /></a> </li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
 							</div>
 						</div>
 						<div class="hide">
@@ -266,7 +256,7 @@
 									<!--
 									<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="600" height="338" id="polyvplayerdf5d18b0ee9d8b6b03e1a9703638acaa_d"><param name="movie" value="http://player.polyv.net/videos/player.swf"></param><param name="allowscriptaccess" value="always"></param><param name="wmode" value="Transparent"></param><param name="flashvars" value="vid=df5d18b0ee9d8b6b03e1a9703638acaa_d"></param><param name="allowFullScreen" value="true"></param><embed src="static/flash/player.swf" width="600" height="338" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="Transparent" name="polyvplayerdf5d18b0ee9d8b6b03e1a9703638acaa_d" allowfullscreen="true" flashvars="vid=df5d18b0ee9d8b6b03e1a9703638acaa_d" /></object>
 									-->
-									<video src="{$info.video}" controls="controls" width="600" autoplay="autoplay">
+									<video src="<?php echo ($info["video"]); ?>" controls="controls" width="600" autoplay="autoplay">
 										your browser does not support the video tag
 									</video>
 								</div>
@@ -275,22 +265,14 @@
 						</div>
 						<div class="hide">
 							<div class="product_dList">
-								<notempty name="caseinfo">
-									<volist name="caseinfo" id="vv">
-								<li style="padding:0 11px;"><a href="index.php?g=home&m=Case&a=detail&id={$vv.id}" title="" target="_blank"><img width="200" height="150" src="{$vv.thumb}" alt="" /><span class="pro_dName">{$vv.title}</span></a></li>
-									</volist>
-								</notempty>
+								<?php if(!empty($caseinfo)): if(is_array($caseinfo)): $i = 0; $__LIST__ = $caseinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li style="padding:0 11px;"><a href="index.php?g=home&m=Case&a=detail&id=<?php echo ($vv["id"]); ?>" title="" target="_blank"><img width="200" height="150" src="<?php echo ($vv["thumb"]); ?>" alt="" /><span class="pro_dName"><?php echo ($vv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
 								<br />
 							</div>
 						</div>
 						<div class="hide">
 							<div class="product_dList">
 								<ul>
-									<notempty name="productinfo">
-										<volist name="productinfo" id="vvv">
-											<li style="padding:0 11px;"><a href="index.php?g=home&m=Product&a=detail&id={$vvv.id}" title="" target="_blank"><img width="200" height="150" src="{$vvv.thumb}" alt="" /><span class="pro_dName">{$vvv.title}</span></a></li>
-										</volist>
-									</notempty>
+									<?php if(!empty($productinfo)): if(is_array($productinfo)): $i = 0; $__LIST__ = $productinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vvv): $mod = ($i % 2 );++$i;?><li style="padding:0 11px;"><a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($vvv["id"]); ?>" title="" target="_blank"><img width="200" height="150" src="<?php echo ($vvv["thumb"]); ?>" alt="" /><span class="pro_dName"><?php echo ($vvv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
 								</ul>
 							</div>
 						</div>
@@ -303,19 +285,15 @@
 		<div class="pre_next">
 			<div class="pre_page fl">
 				<span>上一产品：</span>
-				<empty name="pre">
-					<a >已经是第一个了！</a>
-					<else/>
-					<a href="index.php?g=home&m=Product&a=detail&id={$pre.id}" title="">{$pre.title}</a>
-				</empty>
+				<?php if(empty($pre)): ?><a >已经是第一个了！</a>
+					<?php else: ?>
+					<a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($pre["id"]); ?>" title=""><?php echo ($pre["title"]); ?></a><?php endif; ?>
 			</div>
 			<div class="next_page fr">
 				<span>下一产品：</span>
-				<empty name="next">
-					<a >已经是最后一个了！</a>
-					<else/>
-					<a href="index.php?g=home&m=Product&a=detail&id={$next.id}" title="">{$next.title}</a>
-				</empty>
+				<?php if(empty($next)): ?><a >已经是最后一个了！</a>
+					<?php else: ?>
+					<a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($next["id"]); ?>" title=""><?php echo ($next["title"]); ?></a><?php endif; ?>
 
 			</div>
 		</div>

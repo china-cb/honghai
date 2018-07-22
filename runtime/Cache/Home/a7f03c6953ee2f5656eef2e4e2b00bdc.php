@@ -163,7 +163,7 @@
 		<div class="case_chnal">
 			<h3>
 				<ul>
-					<?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="<?php if($vo["id"] == $catid): ?>case_cur<?php endif; ?>"><a href="index.php?g=Home&amp;m=Case&amp;a=clist&amp;id=<?php echo ($vo["id"]); ?>"><?php echo ($vo["catname"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+					<?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="<?php if($vo["id"] == $catid): ?>case_cur<?php endif; ?>"><a href="index.php?g=Home&m=Case&a=clist&id=<?php echo ($vo["id"]); ?>"><?php echo ($vo["catname"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 				</ul></h3>
 		</div>
 		<div class="clear"></div>
@@ -189,16 +189,11 @@
 		<div class="pager">
 			<div class="pager">
 				总计
-				<b>520</b> 个记录，共
-				<font color="blue">44</font> 页，当前第
-				<font color="red">1</font> 页 |
-				<a href="http://www.zz-hh.com/case/o1/">第一页</a> 上一页
-				<a href="http://www.zz-hh.com/case/o1/" style="color:red;font-weight:bold">1</a>
-				<a href="http://www.zz-hh.com/case/o2/">2</a>
-				<a href="http://www.zz-hh.com/case/o3/">3</a>
-				<a href="http://www.zz-hh.com/case/o4/">4</a>
-				<a href="http://www.zz-hh.com/case/o2/">下一页</a>
-				<a href="http://www.zz-hh.com/case/o44/">最末页</a>
+				<b><?php echo ($totalCount); ?></b> 个记录，共
+				<font color="blue"><?php echo ($numPerPage); ?>
+				</font> 页，当前第
+				<font color="red"><?php echo ($currentPage); ?></font> 页 |
+				<?php echo ($pages); ?>
 			</div>
 		</div>
 	</div>

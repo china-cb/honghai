@@ -4,12 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="Copyright" content="zZ-hH.coM" />
-    <meta name="Author" content="优化推广,WZe8.coM" />
-    <title>公司动态|新闻资讯|洪海光电集团公司</title>
-    <meta name="keywords" content="公司新闻,洪海新闻,洪海动态" />
-    <meta name="description" content="洪海光电集团公司动态新闻、广告牌动态资讯、专利快报、展会动态、广告机工厂动态、发展动态等相关洪海最新资讯。400-6189-567国内专业创意广告设备制造商" />
-    <link rel="canonical" href="http://www.zz-hh.com/news/dongtai" />
+    <meta name="Author" content="建设网站,wze8.Com" />
+    <title>企业简介|洪海光电集团公司- Zz-Hh.Com</title>
+    <meta name="keywords" content="洪海公司简介,洪海光电集团简介,洪海光电公司介绍" />
+    <meta name="description" content="洪海光电集团是经国家工商总局注册的智能光电广告产品制作生产企业，注册资金1.2亿元，下设上海子公司、并在山东等地设有三面翻户外广告媒体、LED光电科技、城市公共设施多家生产工厂。" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/hh/static/css/common.css" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/hh/static/css/style.css" />
 </head>
@@ -54,7 +56,7 @@
 </div>
 <div class="nav" id="nav">
     <ul style="width:1020px;margin:0 auto;">
-        <li>
+        <li class="nav_cur">
             <div class="nav_name">
                 <a href="http://www.zz-hh.com/guanyu.html" target="_blank">走进洪海</a>
             </div>
@@ -114,7 +116,7 @@
                     </ul>
                 </div>
             </div> </li>
-        <li class="nav_cur">
+        <li>
             <div class="nav_name">
                 <a href="http://www.zz-hh.com/news" target="_blank">新闻资讯</a>
             </div>
@@ -141,7 +143,7 @@
 </div>
 <div class="clear"></div>
 <div class="banner">
-    <img width="1600" height="238" alt="洪海资讯Zz-hh.com" src="static/picture/honghaixinwen.jpg" />
+    <img width="1600" height="238" alt="企业简介" src="static/picture/guanyuhonghai.jpg" />
 </div>
 <div class="body_warp">
     <div class="body_c wid1000">
@@ -149,11 +151,12 @@
             <div class="body_Line"></div>
             <div class="chnal">
                 <div class="chnal_top">
-                    <h5>资讯分类<span>News</span></h5>
+                    <h5>关于我们<span>About Us</span></h5>
                 </div>
                 <div class="chnal_list">
                     <ul>
-                        <?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="<?php if($vo["id"] == $catid): ?>chnal_cur<?php endif; ?>"><a href="index.php?g=Home&m=News&a=nlist&id=<?php echo ($vo["id"]); ?>"><?php echo ($vo["catname"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                        <?php if(is_array($menu)): $i = 0; $__LIST__ = $menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="<?php if($vo["id"] == $catid): ?>chnal_cur<?php endif; ?>"><a href="index.php?g=Home&m=Page&a=detail&id=<?php echo ($vo["id"]); ?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
                     </ul>
                 </div>
             </div>
@@ -166,8 +169,8 @@
                     <a class="abtn aleft" href="#left" title="上移"></a>
                     <div class="imglist_w">
                         <ul class="imglist">
-                            <?php if(!empty($productinfo)): if(is_array($productinfo)): $i = 0; $__LIST__ = $productinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li style="padding:0 11px;"><a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($vv["id"]); ?>" title="" target="_blank"><img width="200" height="150" src="<?php echo ($vv["thumb"]); ?>" alt="" /><span class="pro_dName"><?php echo ($vv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
-                       </ul>
+                            <?php if(!empty($productinfo)): if(is_array($productinfo)): $i = 0; $__LIST__ = $productinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vvv): $mod = ($i % 2 );++$i;?><li style="padding:0 11px;"><a href="index.php?g=home&m=Product&a=detail&id=<?php echo ($vvv["id"]); ?>" title="" target="_blank"><img width="200" height="150" src="<?php echo ($vvv["thumb"]); ?>" alt="" /><span class="pro_dName"><?php echo ($vvv["title"]); ?></span></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
+                           </ul>
                     </div>
                     <a class="abtn aright" href="#right" title="下移"></a>
                 </div>
@@ -176,54 +179,21 @@
         <div class="body_r fr">
             <div class="position">
                 <div class="posit_name fl">
-
+                    <h2>洪海企业简介</h2>
                 </div>
                 <div class="posit_where fr">
                     <div class="urHere">
                         当前位置：
                         <a href="http://www.zz-hh.com/">首页</a>
-                        <b>&gt;</b>
-                        <a href="http://www.zz-hh.com/news">新闻资讯</a>&gt;公司动态
+                        <b>&gt;</b><?php echo ($info["title"]); ?>
                     </div>
                 </div>
             </div>
+            <div class="clear"></div>
             <div class="content">
-                <div class="news_title"><h1>制作高速路擎天柱高炮广告牌选用网架结构有什么好处</h1></div>
-                <div class="news_infor">
-                    <span>浏览数：<?php echo ($info["hits"]); ?></span> <span>发布时间：<?php echo (date("Y-m-d H:i:s",$info["createtime"])); ?></span>
-                    <br><br>
-                    </div>
-                <div class="news_content">
-                    <?php echo (htmlspecialchars_decode($info["content"])); ?>
-                </div>
-                <div class="pre_next">
-                    <div class="pre_page fl">
-                        <span>上一篇：</span>
-                        <?php if(empty($pre)): ?><a >已经是第一个了！</a>
-                            <?php else: ?>
-                            <a href="index.php?g=home&m=News&a=detail&id=<?php echo ($pre["id"]); ?>" title=""><?php echo ($pre["title"]); ?></a><?php endif; ?>
-                    </div>
-                    <div class="next_page fr">
-                        <span>下一篇：</span>
-                        <?php if(empty($next)): ?><a >已经是最后一个了！</a>
-                            <?php else: ?>
-                            <a href="index.php?g=home&m=News&a=detail&id=<?php echo ($next["id"]); ?>" title=""><?php echo ($next["title"]); ?></a><?php endif; ?>
-                        </div>
-                </div>
-                <div class="ab_news">
-                    <?php if(is_array($catemenu)): $i = 0; $__LIST__ = $catemenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="ab_Newbox fl">
-                        <div class="ab_Newname"><?php echo ($vo["catname"]); ?></div>
-                        <div class="ab_Newlist">
-                            <ul>
-                                <?php if(is_array($vo["sonlist"])): $i = 0; $__LIST__ = $vo["sonlist"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vv): $mod = ($i % 2 );++$i;?><li><span><?php echo (date("Y-m-d",$vv["createtime"])); ?></span> <a href="index.php?g=home&m=News&a=detail&id=<?php echo ($vv["id"]); ?>" target="_blank" title=""><?php echo (substr($vv["title"],0,30)); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-
-                            </ul>
-                        </div>
-                    </div><?php endforeach; endif; else: echo "" ;endif; ?>
-
-                </div>
-
+                <?php echo (htmlspecialchars_decode($info["content"])); ?>
             </div>
+        </div>
     </div>
 </div>
 <div class="footer">
@@ -336,6 +306,60 @@
 <script type="text/javascript" src="__PUBLIC__/hh/static/js/transform.js"></script>
 <script language="JavaScript" src="__PUBLIC__/hh/static/js/954473.js" type="text/javascript" charset="utf-8"></script>
 <div style="display:none">
+    <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?2a445adb71c7d96c54e32624ded8f3e9"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259764806'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259764806%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+    <script type="text/javascript">
+        function addCopyright() {
+            var Original = "原文链接：" + location.href + " @洪海光电集团";
+            if ("function" == typeof window.getSelection) {
+                var c = window.getSelection();
+                if ("Microsoft Internet Explorer" == navigator.appName && navigator.appVersion.match(/MSIE ([\d.]+)/)[1] >= 10 || "Opera" == navigator.appName) {
+                    var g = c.getRangeAt(0),
+                            h = document.createElement("span");
+                    h.appendChild(g.cloneContents()),
+                            g.insertNode(h);
+                    var i = h.innerHTML.replace(/(?:\n|\r\n|\r)/gi, "").replace(/<\s*script[^>]*>[\s\S]*?<\/script>/gim, "").replace(/<\s*style[^>]*>[\s\S]*?<\/style>/gim, "").replace(/<!--.*?-->/gim, "").replace(/<!DOCTYPE.*?>/gi, "");
+                    try {
+                        document.getElementsByTagName("body")[0].removeChild(h)
+                    } catch(f) {
+                        h.style.display = "none",
+                                h.innerHTML = ""
+                    }
+                } else var d = "" + c;
+                var e = document.getElementsByTagName("body")[0],
+                        f = document.createElement("div");
+                f.style.position = "absolute",
+                        f.style.left = "-99999px",
+                        e.appendChild(f),
+                        f.innerHTML = d.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, "$1<br />$2") + "<br />" + Original,
+                        c.selectAllChildren(f),
+                        setTimeout(function() {
+                                    e.removeChild(f)
+                                },
+                                0)
+            } else if ("object" == typeof document.selection.createRange) {
+                event.returnValue = !1;
+                var c = document.selection.createRange().text;
+                window.clipboardData.setData("Text", c + "\n" + Original)
+            }
+        };
+        document.body.oncopy = addCopyright;
+    </script>
 </div>
 </body>
 </html>

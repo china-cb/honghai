@@ -54,6 +54,47 @@ class PublicAction extends Action {
         $this->assign('block',$block);
     }
 
+    public function getcaseinfo($catid='')
+    {
+        if(empty($catid)){
+            $cateid = M("category")
+                ->where(["parentid"=>74])
+                ->getField("arrchildid");
+            $map['catid'] = array("in",$cateid);
+        }else{
+            $map['catid'] = $catid;
+        }
+        $cateinfo = M("product")
+                ->where($map)
+                ->limit(0,6)
+                ->select();
+        return $cateinfo;
+    }
+
+    public function getproductinfo($catid='')
+    {
+        if(empty($catid)){
+            $arr = array();
+            $cateid = M("category")
+                ->field("id")
+                ->where(["parentid"=>7,"ismenu"=>1])
+                ->select();
+            foreach($cateid as $v){
+                $arr[] = $v['id'];
+            }
+            //var_dump($cateid);
+            $map['catid'] = array("in",$arr);
+        }else{
+            $map['catid'] = $catid;
+        }
+        $cateinfo = M("product")
+            ->where($map)
+            ->limit(0,6)
+            ->select();
+        //echo M()->getLastSql();
+        return $cateinfo;
+    }
+
     //验证码
     public function verify()
     {

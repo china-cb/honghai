@@ -196,16 +196,11 @@
 		<div class="pager">
 			<div class="pager">
 				总计
-				<b>520</b> 个记录，共
-				<font color="blue">44</font> 页，当前第
-				<font color="red">1</font> 页 |
-				<a href="http://www.zz-hh.com/case/o1/">第一页</a> 上一页
-				<a href="http://www.zz-hh.com/case/o1/" style="color:red;font-weight:bold">1</a>
-				<a href="http://www.zz-hh.com/case/o2/">2</a>
-				<a href="http://www.zz-hh.com/case/o3/">3</a>
-				<a href="http://www.zz-hh.com/case/o4/">4</a>
-				<a href="http://www.zz-hh.com/case/o2/">下一页</a>
-				<a href="http://www.zz-hh.com/case/o44/">最末页</a>
+				<b>{$totalCount}</b> 个记录，共
+				<font color="blue">{$numPerPage}
+				</font> 页，当前第
+				<font color="red">{$currentPage}</font> 页 |
+				{$pages}
 			</div>
 		</div>
 	</div>

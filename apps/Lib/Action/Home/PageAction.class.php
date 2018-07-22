@@ -79,6 +79,22 @@ class PageAction extends PublicAction {
         exit;
     }
 
+    public function detail()
+    {
+        $menu = M("page")->select();
+        $this->assign("menu",$menu);
+
+        $id = I("id");
+        $info = M("page")->where(["id"=>$id])->find();
+        $this->assign("catid",$id);                 //分类ID
+        $this->assign("info",$info);                //产品详情
+
+        $productinfo = $this->getproductinfo();//获取相关产品
+        $this->assign("productinfo",$productinfo);
+
+        $this->display();
+    }
+
 
 
 
